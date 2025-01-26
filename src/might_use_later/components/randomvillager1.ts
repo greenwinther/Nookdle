@@ -1,5 +1,5 @@
-import { mockVillagers } from "../data/mockVillagers";
-import { Villager } from "../types/villager";
+import { mockVillagers } from "../../data/mockVillagers";
+import { Villager } from "../../types/villager";
 
 // Function that selects a random villager for the game
 export const getRandomVillager = (): Villager => {

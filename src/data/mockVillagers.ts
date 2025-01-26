@@ -40,4 +40,4 @@ export const mockVillagers: Villager[] = [
   },
 ];
 
-export const guessedVillagers: Villager[] = [];
+export let guessedVillagers: Villager[] = [];

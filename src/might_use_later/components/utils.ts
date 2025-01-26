@@ -1,8 +1,8 @@
 // Helper functions
 // Helper functions like random villager selection, string comparison, etc.
-import { mockVillagers } from "../data/mockVillagers";
-import { Villager } from "../types/villager";
-import { getClues } from "./randomvillager";
+import { mockVillagers } from "../../data/mockVillagers";
+import { Villager } from "../../types/villager";
+import { getClues } from "./randomvillager1";
 import { createClueBoxes } from "./ui";
 
 // Function to handle filtering and updating suggestions
@@ -48,7 +48,6 @@ export const displayGuessedVillager = (
     (villager) => villager.name.toLowerCase() === guess.toLowerCase()
   );
   const clues = getClues(selectedVillager);
-  // If the villager has already been guessed, show a message
   if (
     guessedVillagers.some((villager) => villager.name === guessedVillager?.name)
   ) {

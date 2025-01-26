@@ -2,7 +2,7 @@
 // Randomly pick a daily villager
 // Check if the user's guess is correct
 // Provide clues
-import { guessedVillagers } from "../data/mockVillagers";
+import { guessedVillagers } from "../../data/mockVillagers";
 import {
   createClueBoxes,
   createInputField,
@@ -10,7 +10,7 @@ import {
   createRestartButton,
   clearGameUI,
 } from "./ui";
-import { getRandomVillager, getClues } from "./randomvillager";
+import { getRandomVillager, getClues } from "./randomvillager1";
 import {
   updateVillagerSuggestions,
   displayGuessedVillager,
@@ -18,12 +18,11 @@ import {
 } from "./utils";
 
 export const startGame = () => {
+  // Call on the functions to get the Ui
   const selectedVillager = getRandomVillager();
   const clues = getClues(selectedVillager);
   console.log("Selected Villager:", selectedVillager);
   /*   console.log("Clues:", clues); */
-  // Call on the functions to get the Ui
-  clearGameUI();
   createClueBoxes(clues, null, selectedVillager);
   const displayCard = createDisplayCard();
   createInputField();
@@ -40,6 +39,7 @@ export const startGame = () => {
 
   // When the resetbutton is pressed, I clear the Ui and start the game a new
   resetButton.addEventListener("click", () => {
+    clearGameUI();
     startGame();
   });
 

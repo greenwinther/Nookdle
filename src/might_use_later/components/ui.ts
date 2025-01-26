@@ -3,7 +3,7 @@
 // Render the current clue
 // Update the score or stats
 
-import { Villager } from "../types/villager";
+import { Villager } from "../../types/villager";
 
 // Function that creates the clue boxes
 export const createClueBoxes = (
@@ -11,6 +11,7 @@ export const createClueBoxes = (
   guessedVillager: Villager | null,
   selectedVillager: Villager
 ) => {
+  // Create a container for the game
   const gameContainer = document.createElement("div");
   gameContainer.id = "game-container";
 
@@ -18,19 +19,16 @@ export const createClueBoxes = (
   const villagerContainer = document.createElement("div");
   villagerContainer.classList.add("villager-container");
 
-  // Villager Name Section
+  // Create a container for the villager name
   const villagerNameDiv = document.createElement("div");
   villagerNameDiv.classList.add("villager-name");
-  villagerNameDiv.textContent = guessedVillager
-    ? guessedVillager.name
-    : "Unknown Villager";
-
   villagerContainer.appendChild(villagerNameDiv);
 
-  // Clue Boxes Section
+  // Create a container for the clue boxes
   const cluesContainer = document.createElement("div");
   cluesContainer.classList.add("clues-container");
 
+  // Create the clue boxes
   clues.forEach((clue) => {
     const clueBox = document.createElement("div");
     clueBox.classList.add("clue-box");
@@ -45,10 +43,9 @@ export const createClueBoxes = (
         ? "correct"
         : "incorrect"
     }">
-      ${guessedVillager ? guessedVillager[clue.key as keyof Villager] : "?"}
+      ${guessedVillager ? guessedVillager[clue.key as keyof Villager] : ""}
     </p>
   `;
-
     cluesContainer.appendChild(clueBox);
   });
 
@@ -108,4 +105,5 @@ export const clearGameUI = () => {
   document.querySelector("#display-card")?.remove();
   document.querySelector("#input-container")?.remove();
   document.querySelector("#restart-button")?.remove();
+  document.querySelector("#submit-button")?.remove();
 };
