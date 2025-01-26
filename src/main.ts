@@ -11,3 +11,7 @@ import { startGame2 } from "./components2/game2"; */
 /* startGame3(); */
 
 /* createGameUI(); */
+
+import { initApp } from "./app";
+
+document.addEventListener("DOMContentLoaded", initApp);
