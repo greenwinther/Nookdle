@@ -3,6 +3,7 @@ import type { NookipediaCharacter } from "../types/villager";
 
 export let allVillagers: NookipediaCharacter[] = [];
 
+// Fetches all villagers only if not already fetched
 export const fetchAllVillagers = async (): Promise<NookipediaCharacter[]> => {
   if (allVillagers.length === 0) {
     const response = await fetch("https://api.nookipedia.com/villagers", {
