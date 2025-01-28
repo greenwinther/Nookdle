@@ -1,5 +1,7 @@
 import { NookipediaCharacter } from "./types/villager";
 
+const savedVillagers: NookipediaCharacter[] = [];
+
 // Function which creates a searchfield and attaches it to a container
 export const createSearchField = () => {
   // Create Search field container
@@ -47,7 +49,24 @@ export const createVillagerCard = (villager: NookipediaCharacter) => {
       <p>Catchphrase: "${villager.phrase}"</p>
     `;
 
-  card.append(image, name, details);
+  // Create Save button
+  const saveButton = document.createElement("button");
+  saveButton.textContent = "Save";
+  saveButton.className = "save-button";
+
+  // Add event listener for Save button
+  saveButton.addEventListener("click", () => {
+    if (!savedVillagers.some((saved) => saved.name === villager.name)) {
+      savedVillagers.push(villager);
+      console.log(`${villager.name} saved!`);
+      console.log("Saved Villagers:", savedVillagers);
+    } else {
+      console.log(`${villager.name} is already saved.`);
+    }
+  });
+
+  // Append all elements to the card
+  card.append(image, name, details, saveButton);
   return card;
 };
 
