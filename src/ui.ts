@@ -1,6 +1,6 @@
 import { NookipediaCharacter } from "./types/villager";
 
-const savedVillagers: NookipediaCharacter[] = [];
+export const savedVillagers: NookipediaCharacter[] = [];
 
 // Function which creates a searchfield and attaches it to a container
 export const createSearchField = () => {
@@ -56,6 +56,7 @@ export const createVillagerCard = (villager: NookipediaCharacter) => {
 
   // Add event listener for Save button
   saveButton.addEventListener("click", () => {
+    // "some" makes it so I cant add the ome one twice to avoid duplicates
     if (!savedVillagers.some((saved) => saved.name === villager.name)) {
       savedVillagers.push(villager);
       console.log(`${villager.name} saved!`);
