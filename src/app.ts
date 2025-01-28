@@ -1,66 +1,73 @@
-import { fetchVillagers } from "./scripts/fetchVillagers";
-import { createSearchControls, createVillagerCard } from "./domUtils";
-import type { NookipediaCharacter } from "./types/villager";
+import { fetchAllVillagers } from "./scripts/fetchVillagers";
+import { updateSortButtons, filterVillagers } from "./utils";
+import type { SortableField } from "./types/villager";
+import {
+  createSearchField,
+  createSortButtons,
+  createVillagersContainer,
+  createLoadingElement,
+  setupAppUI,
+} from "./ui";
 
 export const initApp = async () => {
   const appContainer = document.getElementById("app")!;
 
-  // Create search and filter controls
-  const controls = createSearchControls();
-  const villagersContainer = document.createElement("div");
-  villagersContainer.className = "villagers-grid";
+  const searchfield = createSearchField();
+  const sortButtons = createSortButtons();
+  const villagersContainer = createVillagersContainer();
+  const loading = createLoadingElement();
 
-  // Create loading indicator
-  const loading = document.createElement("div");
-  loading.className = "loading";
-  loading.textContent = "Loading villagers...";
-  loading.style.display = "none";
+  let currentSort: SortableField = "name-asc";
 
-  // Assemble the UI
-  appContainer.append(controls.container, loading, villagersContainer);
+  setupAppUI(
+    appContainer,
+    searchfield,
+    sortButtons,
+    loading,
+    villagersContainer
+  );
 
-  // Add event listeners
-  let currentSearch = "";
-  let currentSort: keyof NookipediaCharacter = "name";
-
-  const performSearch = debounce(async () => {
-    try {
-      loading.style.display = "block";
-      villagersContainer.innerHTML = "";
-
-      const villagers = await fetchVillagers(currentSearch, currentSort);
-
-      villagers.forEach((villager) => {
-        villagersContainer.appendChild(createVillagerCard(villager));
-      });
-    } catch (error) {
-      console.error("Error:", error);
-      villagersContainer.innerHTML = `<div class="error">Failed to load villagers</div>`;
-    } finally {
-      loading.style.display = "none";
-    }
-  }, 500);
-
-  controls.searchInput.addEventListener("input", (e) => {
-    currentSearch = (e.target as HTMLInputElement).value;
-    performSearch();
-  });
-
-  controls.sortSelect.addEventListener("change", (e) => {
-    currentSort = (e.target as HTMLSelectElement)
-      .value as keyof NookipediaCharacter;
-    performSearch();
-  });
-
-  // Initial load
-  performSearch();
-};
-
-// Debounce function to limit API calls
-const debounce = (fn: Function, delay: number) => {
-  let timeoutId: number;
-  return (...args: any[]) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
+  const updateDisplay = (
+    searchTerm = "",
+    sortBy: SortableField = currentSort
+  ) => {
+    filterVillagers(searchTerm, sortBy);
+    updateSortButtons(sortBy);
   };
+
+  try {
+    await fetchAllVillagers();
+    loading.remove();
+    updateDisplay();
+  } catch (error) {
+    console.error("Error:", error);
+    loading.textContent = "Failed to load villagers";
+  }
+
+  // A functions which puts a slight delay before displaying the content
+  const handleUpdate = () => {
+    clearTimeout((handleUpdate as any).timeout);
+    (handleUpdate as any).timeout = setTimeout(() => {
+      const search = searchfield.searchInput.value;
+      updateDisplay(search);
+    }, 50);
+  };
+
+  sortButtons.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains("sort-button")) {
+      const sortKey = target.dataset.sortKey!;
+
+      const isActive = target.classList.contains("active");
+      let currentDirection = "asc";
+      if (isActive) {
+        currentDirection = target.dataset.direction === "asc" ? "desc" : "asc";
+      }
+      currentSort = `${sortKey}-${currentDirection}` as SortableField;
+      updateSortButtons(currentSort);
+      updateDisplay(searchfield.searchInput.value, currentSort);
+    }
+  });
+
+  searchfield.searchInput.addEventListener("input", handleUpdate);
 };
