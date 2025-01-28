@@ -4,7 +4,7 @@ import { NookipediaCharacter } from "./types/villager";
 export const createSearchField = () => {
   // Create Search field container
   const container = document.createElement("div");
-  container.className = "controls";
+  container.className = "search-container";
 
   // Create Search field
   const searchInput = document.createElement("input");
@@ -81,4 +81,35 @@ export const createSortButtons = () => {
   });
 
   return container;
+};
+
+// Creates the main container for the villagers
+export const createVillagersContainer = (): HTMLDivElement => {
+  const container = document.createElement("div");
+  container.className = "villagers-grid";
+  return container;
+};
+
+// Creates the loading screen element
+export const createLoadingElement = (): HTMLDivElement => {
+  const loading = document.createElement("div");
+  loading.className = "loading";
+  loading.textContent = "Loading villagers...";
+  return loading;
+};
+
+// Appends the main components to the app container
+export const setupAppUI = (
+  appContainer: HTMLElement,
+  searchfield: ReturnType<typeof createSearchField>,
+  sortButtons: HTMLDivElement,
+  loading: HTMLDivElement,
+  villagersContainer: HTMLDivElement
+) => {
+  appContainer.append(
+    searchfield.container,
+    sortButtons,
+    loading,
+    villagersContainer
+  );
 };
