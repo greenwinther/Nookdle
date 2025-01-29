@@ -230,7 +230,7 @@ export const createFishContainer = (): HTMLDivElement => {
 export const createLoadingElement = (): HTMLDivElement => {
   const loading = document.createElement("div");
   loading.className = "loading";
-  loading.textContent = "Loading villagers...";
+  loading.textContent = "Please give it a sec...";
   return loading;
 };
 
