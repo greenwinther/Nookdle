@@ -3,7 +3,12 @@ import {
   fetchAllBugs,
   fetchAllFish,
 } from "./scripts/fetchVillagers";
-import { updateSortButtons, filterVillagers } from "./utils";
+import {
+  updateSortButtons,
+  filterVillagers,
+  filterBugs,
+  filterFish,
+} from "./utils";
 import type { SortableField } from "./types/types";
 import {
   createSearchField,
@@ -47,7 +52,12 @@ export const initApp = async () => {
     sortBy: SortableField = currentSort,
     onlySaved: boolean = false
   ) => {
-    filterVillagers(searchTerm, sortBy, onlySaved);
+    // Call the appropriate filter function to populate the grids
+    filterBugs(searchTerm, onlySaved); // Should populate the bugs grid
+    filterFish(searchTerm, onlySaved); // Should populate the fish grid
+    filterVillagers(searchTerm, sortBy, onlySaved); // Should populate the villagers grid
+
+    // Update the sort buttons
     updateSortButtons(sortBy);
   };
 
@@ -58,6 +68,8 @@ export const initApp = async () => {
       await fetchAllVillagers();
       loading.remove();
       updateDisplay();
+      bugsContainer.innerHTML = "";
+      fishContainer.innerHTML = "";
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load villagers";
@@ -70,6 +82,8 @@ export const initApp = async () => {
       await fetchAllBugs();
       loading.remove();
       updateDisplay();
+      villagersContainer.innerHTML = "";
+      fishContainer.innerHTML = "";
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load bugs";
@@ -79,9 +93,12 @@ export const initApp = async () => {
   fishButton.addEventListener("click", async () => {
     try {
       appContainer.appendChild(loading);
+      console.log(fetchAllFish());
       await fetchAllFish();
       loading.remove();
       updateDisplay();
+      villagersContainer.innerHTML = "";
+      bugsContainer.innerHTML = "";
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load fish";
