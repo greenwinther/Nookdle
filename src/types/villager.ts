@@ -41,17 +41,6 @@ export type NookipediaCharacter = {
   };
 };
 
-// Test type to see if this works
-export type Villager = {
-  name: string;
-  gender: string;
-  personality: string;
-  species: string;
-  hobby: string;
-  starSign: string;
-  birthMonth: string;
-};
-
 // Type for sortable fields (buttons)
 export type SortableField =
   | "name-asc"
