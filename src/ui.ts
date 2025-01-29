@@ -45,6 +45,7 @@ export const createVillagerCard = (villager: NookipediaCharacter) => {
   details.innerHTML = `
       <p>Species: ${villager.species}</p>
       <p>Personality: ${villager.personality}</p>
+      <p>Gender: ${villager.gender}</p>
       <p>Birthday: ${villager.birthday_month} ${villager.birthday_day}</p>
       <p>Catchphrase: "${villager.phrase}"</p>
     `;
