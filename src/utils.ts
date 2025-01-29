@@ -1,6 +1,16 @@
-import type { NookipediaCharacter, SortableField } from "./types/villager";
-import { allVillagers } from "./scripts/fetchVillagers";
-import { createVillagerCard, savedVillagers } from "./ui";
+import type { NookipediaCharacter } from "./types/villager";
+import type { SortableField } from "./types/other";
+import type { NookipediaBugs } from "./types/bugs";
+import type { NookipediaFish } from "./types/fish";
+import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
+import {
+  createVillagerCard,
+  createBugCard,
+  createFishCard,
+  savedVillagers,
+  savedBugs,
+  savedFish,
+} from "./ui";
 
 // Function which updates the sort buttons based on the current sort field and direction
 export const updateSortButtons = (sortBy: SortableField) => {
@@ -108,4 +118,52 @@ export const getFilteredVillagers = (
   });
 
   return filtered;
+};
+
+export const filterFish = (searchTerm: string, onlySaved: boolean = false) => {
+  const fishContainer = document.querySelector(".fish-grid");
+  if (!fishContainer) return;
+  fishContainer.innerHTML = "";
+
+  const fishToDisplay = onlySaved ? savedFish : allFish;
+  const filteredFish = getFilteredFish(searchTerm, fishToDisplay);
+
+  filteredFish.forEach((fish) => {
+    fishContainer.appendChild(createFishCard(fish));
+  });
+};
+
+export const getFilteredFish = (
+  searchTerm: string,
+  fish: NookipediaFish[] = allFish
+): NookipediaFish[] => {
+  if (!searchTerm) return fish;
+
+  return fish.filter((f) =>
+    f.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
+};
+
+export const filterBugs = (searchTerm: string, onlySaved: boolean = false) => {
+  const bugsContainer = document.querySelector(".bugs-grid");
+  if (!bugsContainer) return;
+  bugsContainer.innerHTML = "";
+
+  const bugsToDisplay = onlySaved ? savedBugs : allBugs;
+  const filteredBugs = getFilteredBugs(searchTerm, bugsToDisplay);
+
+  filteredBugs.forEach((bug) => {
+    bugsContainer.appendChild(createBugCard(bug));
+  });
+};
+
+export const getFilteredBugs = (
+  searchTerm: string,
+  bugs: NookipediaBugs[] = allBugs
+): NookipediaBugs[] => {
+  if (!searchTerm) return bugs;
+
+  return bugs.filter((b) =>
+    b.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
 };
