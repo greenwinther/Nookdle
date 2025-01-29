@@ -52,18 +52,23 @@ export const createVillagerCard = (villager: NookipediaCharacter) => {
 
   // Create Save button
   const saveButton = document.createElement("button");
-  saveButton.textContent = "Save";
   saveButton.className = "save-button";
 
-  // Add event listener for Save button
+  // Check if the villager is already saved
+  const isSaved = savedVillagers.some((v) => v.id === villager.id);
+  saveButton.textContent = isSaved ? "Remove from Saved" : "Save Villager";
+
+  // Find the index of the villager in the savedVillagers array
   saveButton.addEventListener("click", () => {
-    // "some" makes it so I cant add the ome one twice to avoid duplicates
-    if (!savedVillagers.some((saved) => saved.name === villager.name)) {
-      savedVillagers.push(villager);
-      console.log(`${villager.name} saved!`);
-      console.log("Saved Villagers:", savedVillagers);
+    const index = savedVillagers.findIndex((v) => v.id === villager.id);
+
+    // Villager is saved, remove it |  Villager is not saved, add it
+    if (index !== -1) {
+      savedVillagers.splice(index, 1);
+      saveButton.textContent = "Save Villager";
     } else {
-      console.log(`${villager.name} is already saved.`);
+      savedVillagers.push(villager);
+      saveButton.textContent = "Remove from Saved";
     }
   });
 
