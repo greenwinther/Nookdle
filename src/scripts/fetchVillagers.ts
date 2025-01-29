@@ -30,7 +30,6 @@ export const fetchAllFish = async (): Promise<NookipediaFish[]> => {
     });
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
     allFish = await response.json();
   }
   return allFish;
@@ -43,7 +42,6 @@ export const fetchAllBugs = async (): Promise<NookipediaBugs[]> => {
     });
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
     allBugs = await response.json();
   }
   return allBugs;
