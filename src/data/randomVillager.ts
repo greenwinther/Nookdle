@@ -1,4 +1,4 @@
-import { Villager } from "../types/villager";
+import { Villager } from "../types/types";
 import { mockVillagers } from "./mockVillagers";
 
 // Random villager selector

@@ -1,4 +1,4 @@
-import { Villager } from "../types/villager";
+import { Villager } from "../types/types";
 
 // Test vills to make sure the program works before I fetch any data
 export const mockVillagers: Villager[] = [

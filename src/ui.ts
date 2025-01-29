@@ -1,6 +1,8 @@
-import type { NookipediaCharacter } from "./types/villager";
-import type { NookipediaFish } from "./types/fish";
-import type { NookipediaBugs } from "./types/bugs";
+import type {
+  NookipediaCharacter,
+  NookipediaBugs,
+  NookipediaFish,
+} from "./types/types";
 
 export const savedVillagers: NookipediaCharacter[] = [];
 export const savedFish: NookipediaFish[] = [];

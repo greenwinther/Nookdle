@@ -1,7 +1,9 @@
-import type { NookipediaCharacter } from "./types/villager";
-import type { SortableField } from "./types/other";
-import type { NookipediaBugs } from "./types/bugs";
-import type { NookipediaFish } from "./types/fish";
+import type {
+  NookipediaCharacter,
+  NookipediaBugs,
+  NookipediaFish,
+  SortableField,
+} from "./types/types";
 import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
 import {
   createVillagerCard,

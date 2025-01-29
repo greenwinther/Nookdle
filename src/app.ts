@@ -4,7 +4,7 @@ import {
   fetchAllFish,
 } from "./scripts/fetchVillagers";
 import { updateSortButtons, filterVillagers } from "./utils";
-import type { SortableField } from "./types/other";
+import type { SortableField } from "./types/types";
 import {
   createSearchField,
   createSortButtons,

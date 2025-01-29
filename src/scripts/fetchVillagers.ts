@@ -1,7 +1,9 @@
 import { API_KEY } from "../apiKey";
-import type { NookipediaCharacter } from "../types/villager";
-import type { NookipediaBugs } from "../types/bugs";
-import type { NookipediaFish } from "../types/fish";
+import type {
+  NookipediaCharacter,
+  NookipediaBugs,
+  NookipediaFish,
+} from "../types/types";
 
 export let allVillagers: NookipediaCharacter[] = [];
 export let allFish: NookipediaFish[] = [];
