@@ -1,12 +1,21 @@
-import { fetchAllVillagers } from "./scripts/fetchVillagers";
+import {
+  fetchAllVillagers,
+  fetchAllBugs,
+  fetchAllFish,
+} from "./scripts/fetchVillagers";
 import { updateSortButtons, filterVillagers } from "./utils";
-import type { SortableField } from "./types/villager";
+import type { SortableField } from "./types/other";
 import {
   createSearchField,
   createSortButtons,
   createVillagersContainer,
   createLoadingElement,
   setupAppUI,
+  createFetchBugsButton,
+  createFetchFishButton,
+  createFetchVillagersButton,
+  createBugsContainer,
+  createFishContainer,
 } from "./ui";
 
 export const initApp = async () => {
@@ -15,17 +24,22 @@ export const initApp = async () => {
   const searchfield = createSearchField();
   const sortButtons = createSortButtons();
   const villagersContainer = createVillagersContainer();
+  const bugsContainer = createBugsContainer();
+  const fishContainer = createFishContainer();
   const loading = createLoadingElement();
+  const villagersButton = createFetchVillagersButton(appContainer);
+  const bugsButton = createFetchBugsButton(appContainer);
+  const fishButton = createFetchFishButton(appContainer);
 
   let currentSort: SortableField = "name-asc";
-  let showingSaved = false;
 
   setupAppUI(
     appContainer,
     searchfield,
     sortButtons,
-    loading,
-    villagersContainer
+    villagersContainer,
+    bugsContainer,
+    fishContainer
   );
 
   const updateDisplay = (
@@ -37,14 +51,42 @@ export const initApp = async () => {
     updateSortButtons(sortBy);
   };
 
-  try {
-    await fetchAllVillagers();
-    loading.remove();
-    updateDisplay("", currentSort);
-  } catch (error) {
-    console.error("Error:", error);
-    loading.textContent = "Failed to load villagers";
-  }
+  // Fetch villagers only when button is clicked
+  villagersButton.addEventListener("click", async () => {
+    try {
+      appContainer.appendChild(loading);
+      await fetchAllVillagers();
+      loading.remove();
+      updateDisplay();
+    } catch (error) {
+      console.error("Error:", error);
+      loading.textContent = "Failed to load villagers";
+    }
+  });
+
+  bugsButton.addEventListener("click", async () => {
+    try {
+      appContainer.appendChild(loading);
+      await fetchAllBugs();
+      loading.remove();
+      updateDisplay();
+    } catch (error) {
+      console.error("Error:", error);
+      loading.textContent = "Failed to load bugs";
+    }
+  });
+
+  fishButton.addEventListener("click", async () => {
+    try {
+      appContainer.appendChild(loading);
+      await fetchAllFish();
+      loading.remove();
+      updateDisplay();
+    } catch (error) {
+      console.error("Error:", error);
+      loading.textContent = "Failed to load fish";
+    }
+  });
 
   // A function which handles search input updates with debounce
   // If I type Ace real quick I dont want it to search on A then AC then ACE.
@@ -73,6 +115,7 @@ export const initApp = async () => {
     }
   });
 
+  let showingSaved = false;
   const showSavedVillagers = document.getElementById("showSavedVillagersBtn");
   // Show only saved villagers
   if (showSavedVillagers) {
@@ -83,5 +126,8 @@ export const initApp = async () => {
   }
 
   // Handle search input event for searching villagers
-  searchfield.searchInput.addEventListener("input", handleUpdate);
+  searchfield.searchInput.addEventListener("input", () => {
+    const search = searchfield.searchInput.value;
+    updateDisplay(search);
+  });
 };
