@@ -1,4 +1,4 @@
-export type NookipediaFishes = {
+export type NookipediaFish = {
   url: string;
   name: string;
   number: number;
