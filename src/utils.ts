@@ -128,6 +128,7 @@ export const filterFish = (searchTerm: string, onlySaved: boolean = false) => {
   fishContainer.innerHTML = "";
 
   const fishToDisplay = onlySaved ? savedFish : allFish;
+
   const filteredFish = getFilteredFish(searchTerm, fishToDisplay);
 
   filteredFish.forEach((fish) => {
