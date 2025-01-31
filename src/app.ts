@@ -10,42 +10,21 @@ import {
   filterFish,
 } from "./utils";
 import type { SortableField } from "./types/types";
+import { setupAppUI } from "./ui";
 import {
-  createSearchField,
-  createSortButtons,
-  createVillagersContainer,
-  createLoadingElement,
-  setupAppUI,
-  createBugsContainer,
-  createFishContainer,
-} from "./ui";
-import { createFetchButton } from "./fetchButton";
+  appContainer,
+  searchfield,
+  sortButtons,
+  villagersButton,
+  bugsButton,
+  fishButton,
+  loading,
+  villagersContainer,
+  bugsContainer,
+  fishContainer,
+} from "./variable";
 
 export const initApp = async () => {
-  const appContainer = document.getElementById("app")!;
-
-  const searchfield = createSearchField();
-  const sortButtons = createSortButtons();
-  const villagersContainer = createVillagersContainer();
-  const bugsContainer = createBugsContainer();
-  const fishContainer = createFishContainer();
-  const loading = createLoadingElement();
-  const villagersButton = createFetchButton(
-    appContainer,
-    "Load Villagers",
-    "fetch-villagers-btn"
-  );
-  const bugsButton = createFetchButton(
-    appContainer,
-    "Load Bugs",
-    "fetch-bugs-btn"
-  );
-  const fishButton = createFetchButton(
-    appContainer,
-    "Load Fish",
-    "fetch-fish-btn"
-  );
-
   let currentSort: SortableField = "name-asc";
 
   setupAppUI(
