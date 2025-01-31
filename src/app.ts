@@ -1,5 +1,3 @@
-import { updateSortButtons } from "./utils";
-import type { SortableField } from "./types/types";
 import { setupAppUI } from "./ui";
 import {
   appContainer,
@@ -8,8 +6,6 @@ import {
   villagersContainer,
   bugsContainer,
   fishContainer,
-  getCurrentSort,
-  setCurrentSort,
   currentSort,
   showingSaved,
 } from "./variable";
@@ -17,6 +13,7 @@ import { updateDisplay } from "./updateDisplay";
 import { handleSearchUpdate } from "./debouncer";
 import { setupButtonEvents } from "./fetchButtonEvent";
 import { setupShowSavedVillagersButton } from "./savedVillagers";
+import { setupSortButtons } from "./sortButtonEvent";
 
 export const initApp = async () => {
   setupAppUI(
@@ -28,23 +25,17 @@ export const initApp = async () => {
     fishContainer
   );
 
+  console.log(sortButtons);
+
   setupButtonEvents();
 
-  sortButtons.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    if (target.classList.contains("sort-button")) {
-      const sortKey = target.dataset.sortKey!;
-
-      const isActive = target.classList.contains("active");
-      let currentDirection = "asc";
-      if (isActive) {
-        currentDirection = target.dataset.direction === "asc" ? "desc" : "asc";
-      }
-      setCurrentSort(`${sortKey}-${currentDirection}` as SortableField);
-      updateSortButtons(getCurrentSort());
-      handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
-    }
-  });
+  setupSortButtons(
+    sortButtons,
+    searchfield,
+    updateDisplay,
+    currentSort,
+    showingSaved
+  );
 
   setupShowSavedVillagersButton();
 
