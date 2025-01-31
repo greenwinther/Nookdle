@@ -19,7 +19,7 @@ import {
   createBugsContainer,
   createFishContainer,
 } from "./ui";
-import { createFetchButton } from "./fetchBugsButton";
+import { createFetchButton } from "./fetchButton";
 
 export const initApp = async () => {
   const appContainer = document.getElementById("app")!;
