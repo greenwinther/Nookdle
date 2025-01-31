@@ -1,10 +1,10 @@
 import type {
-  NookipediaCharacter,
+  NookipediaVillager,
   NookipediaBugs,
   NookipediaFish,
 } from "./types/types";
 
-export const savedVillagers: NookipediaCharacter[] = [];
+export const savedVillagers: NookipediaVillager[] = [];
 export const savedFish: NookipediaFish[] = [];
 export const savedBugs: NookipediaBugs[] = [];
 
@@ -29,7 +29,7 @@ export const createSearchField = () => {
 };
 
 // Functions which creates the villager cards
-export const createVillagerCard = (villager: NookipediaCharacter) => {
+export const createVillagerCard = (villager: NookipediaVillager) => {
   // Create Card container
   const card = document.createElement("div");
   card.className = "villager-card";

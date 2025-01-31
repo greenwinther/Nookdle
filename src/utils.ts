@@ -1,5 +1,5 @@
 import type {
-  NookipediaCharacter,
+  NookipediaVillager,
   NookipediaBugs,
   NookipediaFish,
   SortableField,
@@ -59,8 +59,8 @@ export const filterVillagers = (
 export const getFilteredVillagers = (
   searchTerm: string,
   sortBy: SortableField,
-  villagers: NookipediaCharacter[] = allVillagers
-): NookipediaCharacter[] => {
+  villagers: NookipediaVillager[] = allVillagers
+): NookipediaVillager[] => {
   // Clone the original array to avoid modifying the source
   let filtered = [...villagers];
 
@@ -110,8 +110,8 @@ export const getFilteredVillagers = (
         aMonth - bMonth || parseInt(a.birthday_day) - parseInt(b.birthday_day);
     } else {
       // Declare a variable for the other keys and compare their strings ("name", "species")
-      const aValue = a[sortKey as keyof NookipediaCharacter] as string;
-      const bValue = b[sortKey as keyof NookipediaCharacter] as string;
+      const aValue = a[sortKey as keyof NookipediaVillager] as string;
+      const bValue = b[sortKey as keyof NookipediaVillager] as string;
       // Compare the two strings alphabetically. If a comes before b, return negative
       comparison = aValue.localeCompare(bValue);
     }

@@ -1,16 +1,16 @@
 import { API_KEY } from "../apiKey";
 import type {
-  NookipediaCharacter,
+  NookipediaVillager,
   NookipediaBugs,
   NookipediaFish,
 } from "../types/types";
 
-export let allVillagers: NookipediaCharacter[] = [];
+export let allVillagers: NookipediaVillager[] = [];
 export let allFish: NookipediaFish[] = [];
 export let allBugs: NookipediaBugs[] = [];
 
 // Fetches all villagers only if not already fetched
-export const fetchAllVillagers = async (): Promise<NookipediaCharacter[]> => {
+export const fetchAllVillagers = async (): Promise<NookipediaVillager[]> => {
   if (allVillagers.length === 0) {
     const response = await fetch("https://api.nookipedia.com/villagers", {
       headers: { "X-API-KEY": API_KEY },

@@ -1,4 +1,4 @@
-export type NookipediaCharacter = {
+export type NookipediaVillager = {
   url: string;
   name: string;
   alt_name: string;
