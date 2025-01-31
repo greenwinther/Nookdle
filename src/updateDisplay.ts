@@ -7,16 +7,36 @@ import {
 import type { SortableField } from "./types/types";
 import { currentSort } from "./variable";
 
+export const updateVillagerDisplay = (
+  searchTerm = "",
+  sortBy: SortableField = currentSort,
+  onlySaved: boolean = false
+) => {
+  filterVillagers(searchTerm, sortBy, onlySaved);
+  // Update the sort buttons
+  updateSortButtons(sortBy);
+};
+
+export const updateFishDisplay = (
+  searchTerm = "",
+  onlySaved: boolean = false
+) => {
+  filterFish(searchTerm, onlySaved);
+};
+
+export const updateBugsDisplay = (
+  searchTerm = "",
+  onlySaved: boolean = false
+) => {
+  filterBugs(searchTerm, onlySaved);
+};
+
 export const updateDisplay = (
   searchTerm = "",
   sortBy: SortableField = currentSort,
   onlySaved: boolean = false
 ) => {
-  // Call the appropriate filter function to populate the grids
-  filterBugs(searchTerm, onlySaved); // Should populate the bugs grid
-  filterFish(searchTerm, onlySaved); // Should populate the fish grid
-  filterVillagers(searchTerm, sortBy, onlySaved); // Should populate the villagers grid
-
-  // Update the sort buttons
-  updateSortButtons(sortBy);
+  updateVillagerDisplay(searchTerm, sortBy, onlySaved);
+  updateFishDisplay(searchTerm, onlySaved);
+  updateBugsDisplay(searchTerm, onlySaved);
 };

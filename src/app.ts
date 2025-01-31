@@ -20,7 +20,12 @@ import {
   getCurrentSort,
   setCurrentSort,
 } from "./variable";
-import { updateDisplay } from "./updateDisplay";
+import {
+  updateBugsDisplay,
+  updateFishDisplay,
+  updateVillagerDisplay,
+  updateDisplay,
+} from "./updateDisplay";
 import { currentSort } from "./variable";
 import { handleSearchUpdate } from "./debouncer";
 
@@ -40,9 +45,11 @@ export const initApp = async () => {
       appContainer.appendChild(loading);
       await fetchAllVillagers();
       loading.remove();
-      updateDisplay();
-      bugsContainer.innerHTML = "";
-      fishContainer.innerHTML = "";
+      updateVillagerDisplay(
+        searchfield.searchInput.value,
+        currentSort,
+        showingSaved
+      );
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load villagers";
@@ -54,9 +61,7 @@ export const initApp = async () => {
       appContainer.appendChild(loading);
       await fetchAllBugs();
       loading.remove();
-      updateDisplay();
-      villagersContainer.innerHTML = "";
-      fishContainer.innerHTML = "";
+      updateBugsDisplay(searchfield.searchInput.value, showingSaved);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load bugs";
@@ -69,9 +74,7 @@ export const initApp = async () => {
       console.log(fetchAllFish());
       await fetchAllFish();
       loading.remove();
-      updateDisplay();
-      villagersContainer.innerHTML = "";
-      bugsContainer.innerHTML = "";
+      updateFishDisplay(searchfield.searchInput.value, showingSaved);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load fish";

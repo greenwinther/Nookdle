@@ -62,12 +62,12 @@ export const getFilteredVillagers = (
   villagers: NookipediaVillager[] = allVillagers
 ): NookipediaVillager[] => {
   // Clone the original array to avoid modifying the source
-  let filtered = [...villagers];
+  let filteredVillagers = [...villagers];
 
   // Search filter, finds villagers whose names starts with the search term
   if (searchTerm) {
     const lowerSearch = searchTerm.toLowerCase();
-    filtered = filtered.filter((villager) =>
+    filteredVillagers = filteredVillagers.filter((villager) =>
       villager.name.toLowerCase().startsWith(lowerSearch)
     );
   }
@@ -80,7 +80,7 @@ export const getFilteredVillagers = (
   ];
 
   // Sort the filtered villagers array based on the selected criteria
-  filtered.sort((a, b) => {
+  filteredVillagers.sort((a, b) => {
     // Set starting point at 0
     let comparison = 0;
 
@@ -119,7 +119,7 @@ export const getFilteredVillagers = (
     return sortDirection === "desc" ? comparison * -1 : comparison;
   });
 
-  return filtered;
+  return filteredVillagers;
 };
 
 export const filterFish = (searchTerm: string, onlySaved: boolean = false) => {
@@ -140,12 +140,15 @@ export const getFilteredFish = (
   searchTerm: string,
   fish: NookipediaFish[] = allFish
 ): NookipediaFish[] => {
-  if (!searchTerm) return fish;
+  let filteredFish = [...fish];
 
-  return fish.filter((f) => {
+  if (searchTerm) {
     const lowerSearch = searchTerm.toLowerCase();
-    f.name.toLowerCase().startsWith(lowerSearch);
-  });
+    filteredFish = filteredFish.filter((fish) => {
+      return fish.name.toLowerCase().startsWith(lowerSearch);
+    });
+  }
+  return filteredFish;
 };
 
 export const filterBugs = (searchTerm: string, onlySaved: boolean = false) => {
@@ -165,10 +168,13 @@ export const getFilteredBugs = (
   searchTerm: string,
   bugs: NookipediaBugs[] = allBugs
 ): NookipediaBugs[] => {
-  if (!searchTerm) return bugs;
+  let filteredBugs = [...bugs];
 
-  return bugs.filter((b) => {
+  if (searchTerm) {
     const lowerSearch = searchTerm.toLowerCase();
-    b.name.toLowerCase().startsWith(lowerSearch);
-  });
+    filteredBugs = filteredBugs.filter((bugs) => {
+      return bugs.name.toLowerCase().startsWith(lowerSearch);
+    });
+  }
+  return filteredBugs;
 };
