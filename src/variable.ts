@@ -1,15 +1,16 @@
 import {
   createSearchField,
   createSortButtons,
-  createVillagersContainer,
   createLoadingElement,
-  createBugsContainer,
-  createFishContainer,
 } from "./ui";
 import { createFetchButton } from "./fetchButton";
+import {
+  createBugsContainer,
+  createFishContainer,
+  createVillagersContainer,
+} from "./container";
 
 export const appContainer = document.getElementById("app")!;
-
 export const searchfield = createSearchField();
 export const sortButtons = createSortButtons();
 export const villagersContainer = createVillagersContainer();
