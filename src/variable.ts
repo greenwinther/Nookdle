@@ -4,11 +4,7 @@ import {
   createLoadingElement,
 } from "./ui";
 import { createFetchButton } from "./fetchButton";
-import {
-  createBugsContainer,
-  createFishContainer,
-  createVillagersContainer,
-} from "./container";
+import { createContainer } from "./container";
 import { SortableField } from "./types/types";
 
 export let currentSort: SortableField = "name-asc";
@@ -21,9 +17,9 @@ export const setCurrentSort = (newSort: SortableField) => {
 export const appContainer = document.getElementById("app")!;
 export const searchfield = createSearchField();
 export const sortButtons = createSortButtons();
-export const villagersContainer = createVillagersContainer();
-export const bugsContainer = createBugsContainer();
-export const fishContainer = createFishContainer();
+export const villagersContainer = createContainer("villagers");
+export const bugsContainer = createContainer("bugs");
+export const fishContainer = createContainer("fish");
 export const loading = createLoadingElement();
 export const villagersButton = createFetchButton(
   appContainer,
