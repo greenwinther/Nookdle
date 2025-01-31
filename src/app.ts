@@ -22,6 +22,7 @@ import {
 } from "./variable";
 import { updateDisplay } from "./updateDisplay";
 import { currentSort } from "./variable";
+import { handleSearchUpdate } from "./debouncer";
 
 export const initApp = async () => {
   setupAppUI(
@@ -77,17 +78,6 @@ export const initApp = async () => {
     }
   });
 
-  // A function which handles search input updates with debounce
-  // If I type Ace real quick I dont want it to search on A then AC then ACE.
-  // This gives it a slight delay after I make an input
-  const handleUpdate = () => {
-    clearTimeout((handleUpdate as any).timeout);
-    (handleUpdate as any).timeout = setTimeout(() => {
-      const search = searchfield.searchInput.value;
-      updateDisplay(search, currentSort, showingSaved);
-    }, 50);
-  };
-
   sortButtons.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (target.classList.contains("sort-button")) {
@@ -100,11 +90,7 @@ export const initApp = async () => {
       }
       setCurrentSort(`${sortKey}-${currentDirection}` as SortableField);
       updateSortButtons(getCurrentSort());
-      updateDisplay(
-        searchfield.searchInput.value,
-        getCurrentSort(),
-        showingSaved
-      );
+      handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
     }
   });
 
@@ -114,13 +100,12 @@ export const initApp = async () => {
   if (showSavedVillagers) {
     showSavedVillagers.addEventListener("click", () => {
       showingSaved = !showingSaved;
-      updateDisplay(searchfield.searchInput.value, currentSort, showingSaved);
+      handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
     });
   }
 
   // Handle search input event for searching villagers
   searchfield.searchInput.addEventListener("input", () => {
-    const search = searchfield.searchInput.value;
-    updateDisplay(search);
+    handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
   });
 };
