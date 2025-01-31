@@ -15,7 +15,7 @@ import {
 } from "./variable";
 import { updateDisplay } from "./updateDisplay";
 import { handleSearchUpdate } from "./debouncer";
-import { setupButtonEvents } from "./buttonEvent";
+import { setupButtonEvents } from "./fetchButtonEvent";
 import { setupShowSavedVillagersButton } from "./savedVillagers";
 
 export const initApp = async () => {

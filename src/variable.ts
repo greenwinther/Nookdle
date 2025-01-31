@@ -3,8 +3,8 @@ import {
   createSortButtons,
   createLoadingElement,
 } from "./ui";
-import { createFetchButton } from "./fetchButton";
-import { createContainer } from "./container";
+import { createFetchButton } from "./createFetchButton";
+import { createContainer } from "./createContainer";
 import { SortableField } from "./types/types";
 
 export let currentSort: SortableField = "name-asc";
