@@ -41,7 +41,32 @@ export type NookipediaCharacter = {
   };
 };
 
-export type NookipediaFish = {
+export type NookipediaCreature = {
+  url: string;
+  name: string;
+  number: number;
+  image_url: string;
+  render_url: string;
+  location: string;
+  rarity: string;
+  total_catch: number;
+  sell_nook: number;
+  tank_width: number;
+  tank_length: number;
+  catchphrases: string[];
+};
+
+export type NookipediaFish = NookipediaCreature & {
+  shadow_size: string;
+  sell_cj: number;
+};
+
+export type NookipediaBugs = NookipediaCreature & {
+  weather: string;
+  sell_flick: number;
+};
+
+/* export type NookipediaFish = {
   url: string;
   name: string;
   number: number;
@@ -73,7 +98,7 @@ export type NookipediaBugs = {
   tank_width: number;
   tank_length: number;
   catchphrases: string[];
-};
+}; */
 
 // Type for sortable fields (buttons)
 export type SortableField =
