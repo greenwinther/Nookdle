@@ -5,14 +5,12 @@ import type {
   SortableField,
 } from "./types/types";
 import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
+import { savedVillagers, savedBugs, savedFish } from "./ui";
 import {
-  createVillagerCard,
   createBugCard,
   createFishCard,
-  savedVillagers,
-  savedBugs,
-  savedFish,
-} from "./ui";
+  createVillagerCard,
+} from "./createCard";
 
 // Function which updates the sort buttons based on the current sort field and direction
 export const updateSortButtons = (sortBy: SortableField) => {
