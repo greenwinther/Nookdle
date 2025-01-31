@@ -3,12 +3,7 @@ import {
   fetchAllBugs,
   fetchAllFish,
 } from "./scripts/fetchVillagers";
-import {
-  updateSortButtons,
-  filterVillagers,
-  filterBugs,
-  filterFish,
-} from "./utils";
+import { updateSortButtons } from "./utils";
 import type { SortableField } from "./types/types";
 import { setupAppUI } from "./ui";
 import {
@@ -22,11 +17,13 @@ import {
   villagersContainer,
   bugsContainer,
   fishContainer,
+  getCurrentSort,
+  setCurrentSort,
 } from "./variable";
+import { updateDisplay } from "./updateDisplay";
+import { currentSort } from "./variable";
 
 export const initApp = async () => {
-  let currentSort: SortableField = "name-asc";
-
   setupAppUI(
     appContainer,
     searchfield,
@@ -35,20 +32,6 @@ export const initApp = async () => {
     bugsContainer,
     fishContainer
   );
-
-  const updateDisplay = (
-    searchTerm = "",
-    sortBy: SortableField = currentSort,
-    onlySaved: boolean = false
-  ) => {
-    // Call the appropriate filter function to populate the grids
-    filterBugs(searchTerm, onlySaved); // Should populate the bugs grid
-    filterFish(searchTerm, onlySaved); // Should populate the fish grid
-    filterVillagers(searchTerm, sortBy, onlySaved); // Should populate the villagers grid
-
-    // Update the sort buttons
-    updateSortButtons(sortBy);
-  };
 
   // Fetch villagers only when button is clicked
   villagersButton.addEventListener("click", async () => {
@@ -115,9 +98,13 @@ export const initApp = async () => {
       if (isActive) {
         currentDirection = target.dataset.direction === "asc" ? "desc" : "asc";
       }
-      currentSort = `${sortKey}-${currentDirection}` as SortableField;
-      updateSortButtons(currentSort);
-      updateDisplay(searchfield.searchInput.value, currentSort, showingSaved);
+      setCurrentSort(`${sortKey}-${currentDirection}` as SortableField);
+      updateSortButtons(getCurrentSort());
+      updateDisplay(
+        searchfield.searchInput.value,
+        getCurrentSort(),
+        showingSaved
+      );
     }
   });
 
