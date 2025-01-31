@@ -142,9 +142,10 @@ export const getFilteredFish = (
 ): NookipediaFish[] => {
   if (!searchTerm) return fish;
 
-  return fish.filter((f) =>
-    f.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-  );
+  return fish.filter((f) => {
+    const lowerSearch = searchTerm.toLowerCase();
+    f.name.toLowerCase().startsWith(lowerSearch);
+  });
 };
 
 export const filterBugs = (searchTerm: string, onlySaved: boolean = false) => {
@@ -166,7 +167,8 @@ export const getFilteredBugs = (
 ): NookipediaBugs[] => {
   if (!searchTerm) return bugs;
 
-  return bugs.filter((b) =>
-    b.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-  );
+  return bugs.filter((b) => {
+    const lowerSearch = searchTerm.toLowerCase();
+    b.name.toLowerCase().startsWith(lowerSearch);
+  });
 };
