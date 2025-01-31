@@ -16,12 +16,10 @@ import {
   createVillagersContainer,
   createLoadingElement,
   setupAppUI,
-  createFetchBugsButton,
-  createFetchFishButton,
-  createFetchVillagersButton,
   createBugsContainer,
   createFishContainer,
 } from "./ui";
+import { createFetchButton } from "./fetchBugsButton";
 
 export const initApp = async () => {
   const appContainer = document.getElementById("app")!;
@@ -32,9 +30,21 @@ export const initApp = async () => {
   const bugsContainer = createBugsContainer();
   const fishContainer = createFishContainer();
   const loading = createLoadingElement();
-  const villagersButton = createFetchVillagersButton(appContainer);
-  const bugsButton = createFetchBugsButton(appContainer);
-  const fishButton = createFetchFishButton(appContainer);
+  const villagersButton = createFetchButton(
+    appContainer,
+    "Load Villagers",
+    "fetch-villagers-btn"
+  );
+  const bugsButton = createFetchButton(
+    appContainer,
+    "Load Bugs",
+    "fetch-bugs-btn"
+  );
+  const fishButton = createFetchButton(
+    appContainer,
+    "Load Fish",
+    "fetch-fish-btn"
+  );
 
   let currentSort: SortableField = "name-asc";
 
