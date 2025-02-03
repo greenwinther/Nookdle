@@ -1,17 +1,15 @@
-import { handleSearchUpdate } from "./debouncer";
-
 export const setupFavoriteButton = (
   button: HTMLButtonElement,
   searchfield: { searchInput: HTMLInputElement },
   updateDisplay: Function,
   currentSort: string,
-  showingSaved: boolean
+  onlySaved: boolean
 ) => {
   button.addEventListener("click", () => {
-    showingSaved = !showingSaved;
+    onlySaved = !onlySaved;
     // Call the updateDisplay function to update the cards
     // Pass the showingSaved state to filter the items
-    handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
+    updateDisplay(searchfield, currentSort, onlySaved);
   });
 };
 

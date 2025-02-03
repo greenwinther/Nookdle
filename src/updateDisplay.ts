@@ -16,7 +16,6 @@ export const updateVillagerDisplay = (
 
 export const updateFishDisplay = (
   searchTerm = "",
-
   onlySaved: boolean = false
 ) => {
   filterFish(searchTerm, onlySaved);
@@ -24,7 +23,6 @@ export const updateFishDisplay = (
 
 export const updateBugsDisplay = (
   searchTerm = "",
-
   onlySaved: boolean = false
 ) => {
   filterBugs(searchTerm, onlySaved);

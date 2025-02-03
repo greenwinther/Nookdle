@@ -26,14 +26,18 @@ export const filterVillagers = (
   const villagersToDisplay = onlySaved ? savedVillagers : allVillagers;
 
   // Filter the villagers based on the search term and sort order
-  const filtered = getFilteredVillagers(searchTerm, sortBy, villagersToDisplay);
+  const filteredVillagers = getFilteredVillagers(
+    searchTerm,
+    sortBy,
+    villagersToDisplay
+  );
 
   // Create and append cards for each filtered villager
-  filtered.forEach((villager) => {
+  filteredVillagers.forEach((villager) => {
     cardContainer.appendChild(createVillagerCard(villager));
   });
 
-  return filtered;
+  return filteredVillagers;
 };
 
 // Function which filters and sorts villagers based on search term and sort order
@@ -47,7 +51,7 @@ export const getFilteredVillagers = (
 
   // Search filter, finds villagers whose names starts with the search term
   if (searchTerm) {
-    const lowerSearch = searchTerm.toLowerCase();
+    const lowerSearch = searchTerm;
     filteredVillagers = filteredVillagers.filter((villager) =>
       villager.name.toLowerCase().startsWith(lowerSearch)
     );
@@ -127,7 +131,7 @@ export const getFilteredFish = (
   let filteredFish = [...fish];
 
   if (searchTerm) {
-    const lowerSearch = searchTerm.toLowerCase();
+    const lowerSearch = searchTerm;
     filteredFish = filteredFish.filter((fish) => {
       return fish.name.toLowerCase().startsWith(lowerSearch);
     });
@@ -158,7 +162,7 @@ export const getFilteredBugs = (
   let filteredBugs = [...bugs];
 
   if (searchTerm) {
-    const lowerSearch = searchTerm.toLowerCase();
+    const lowerSearch = searchTerm;
     filteredBugs = filteredBugs.filter((bugs) => {
       return bugs.name.toLowerCase().startsWith(lowerSearch);
     });

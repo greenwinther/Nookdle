@@ -32,7 +32,6 @@ export const fetchAllVillagers = async (): Promise<NookipediaVillager[]> => {
       API_KEY
     )) as NookipediaVillager[];
 
-    console.log("Fetched villagers data:", villagers);
     allVillagers = villagers;
   }
   return allVillagers;
