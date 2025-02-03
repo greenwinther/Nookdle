@@ -1,9 +1,11 @@
-export type NookipediaNames = {
-  name: string;
-};
+export type NookipediaData =
+  | NookipediaVillager
+  | NookipediaFish
+  | NookipediaBugs;
 
-export type NookipediaVillager = NookipediaNames & {
+export type NookipediaVillager = {
   url: string;
+  name: string;
   alt_name: string;
   title_color: string;
   text_color: string;
@@ -44,8 +46,9 @@ export type NookipediaVillager = NookipediaNames & {
   };
 };
 
-export type NookipediaCreature = NookipediaNames & {
+export type NookipediaCreature = {
   url: string;
+  name: string;
   number: number;
   image_url: string;
   render_url: string;

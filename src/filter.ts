@@ -1,18 +1,149 @@
-import type {
+/* import type {
   NookipediaVillager,
   NookipediaBugs,
   NookipediaFish,
   SortableField,
 } from "./types/types";
 import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
-import { savedBugs, savedFish, savedVillagers } from "./data/variable";
+import { favorites } from "./createElements/createCard";
 import {
   createBugCard,
   createFishCard,
   createVillagerCard,
 } from "./createElements/createCard";
-import { cardContainer } from "./createElements/createContainer";
+import { cardContainer } from "./createElements/createContainer"; */
 
+/* // Generic filter function using arrow syntax
+export const filterEntities = <
+  T extends NookipediaVillager | NookipediaFish | NookipediaBugs
+>(
+  allEntities: T[],
+  createCardFn: (entity: T) => HTMLElement,
+  searchTerm: string,
+  showFavorite: boolean = false,
+  typeGuard: (
+    entity: NookipediaVillager | NookipediaFish | NookipediaBugs
+  ) => entity is T,
+  sortComparator?: (a: T, b: T) => number
+): T[] => {
+  if (!cardContainer) return [];
+  cardContainer.innerHTML = "";
+
+  const entitiesToDisplay = showFavorite
+    ? favorites.filter(typeGuard)
+    : allEntities;
+
+  const filtered = getFilteredEntities(
+    searchTerm,
+    entitiesToDisplay,
+    sortComparator
+  );
+
+  filtered.forEach((entity) => {
+    cardContainer.appendChild(createCardFn(entity));
+  });
+
+  return filtered;
+};
+
+// Generic filtering and sorting function as arrow function
+export const getFilteredEntities = <T extends NookipediaNames>(
+  searchTerm: string,
+  entities: T[],
+  sortComparator?: (a: T, b: T) => number
+): T[] => {
+  let filtered = [...entities];
+
+  if (searchTerm) {
+    const lowerSearch = searchTerm.toLowerCase();
+    filtered = filtered.filter((entity) =>
+      entity.name.toLowerCase().startsWith(lowerSearch)
+    );
+  }
+
+  if (sortComparator) {
+    filtered.sort(sortComparator);
+  }
+
+  return filtered;
+};
+
+// Type guards remain the same
+export const isVillager = (entity: unknown): entity is NookipediaVillager =>
+  typeof entity === "object" && entity !== null && "birthday_month" in entity;
+
+export const isFish = (entity: unknown): entity is NookipediaFish =>
+  typeof entity === "object" && entity !== null && "shadow_size" in entity;
+
+export const isBug = (entity: unknown): entity is NookipediaBugs =>
+  typeof entity === "object" && entity !== null && "weather" in entity;
+
+// Villager comparator as arrow function
+export const createVillagerComparator = (
+  sortBy: SortableField
+): ((a: NookipediaVillager, b: NookipediaVillager) => number) => {
+  const [sortKey, sortDirection] = sortBy.split("-") as [
+    string,
+    "asc" | "desc"
+  ];
+  const monthOrder = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  return (a, b) => {
+    let comparison = 0;
+    if (sortKey === "birthday") {
+      const aMonth = monthOrder.indexOf(a.birthday_month);
+      const bMonth = monthOrder.indexOf(b.birthday_month);
+      comparison =
+        aMonth - bMonth || parseInt(a.birthday_day) - parseInt(b.birthday_day);
+    } else {
+      const aValue = a[sortKey as keyof NookipediaVillager] as string;
+      const bValue = b[sortKey as keyof NookipediaVillager] as string;
+      comparison = aValue.localeCompare(bValue);
+    }
+    return sortDirection === "desc" ? -comparison : comparison;
+  };
+};
+
+// Usage examples remain identical to previous implementation
+export const filterVillagers = filterEntities(
+  allVillagers,
+  createVillagerCard,
+  "search term",
+  false,
+  isVillager,
+  createVillagerComparator("birthday-asc")
+);
+
+export const filterFish = filterEntities(
+  allFish,
+  createFishCard,
+  "search term",
+  true,
+  isFish
+);
+
+export const filterBugs = filterEntities(
+  allBugs,
+  createBugCard,
+  "search term",
+  false,
+  isBug
+); */
+
+/* Old code
 // Function which filters and displays villagers based on search term, sorting, and saved status
 export const filterVillagers = (
   searchTerm: string,
@@ -23,7 +154,9 @@ export const filterVillagers = (
   cardContainer.innerHTML = "";
 
   // Determines which villager-list will be displayed: saved or all
-  const villagersToDisplay = showFavorit ? savedVillagers : allVillagers;
+  const villagersToDisplay = showFavorit
+    ? favorites.filter((fav): fav is NookipediaVillager => "species" in fav)
+    : allVillagers;
 
   // Filter the villagers based on the search term and sort order
   const filteredVillagers = getFilteredVillagers(
@@ -114,7 +247,9 @@ export const filterFish = (
   if (!cardContainer) return [];
   cardContainer.innerHTML = "";
 
-  const fishToDisplay = showFavorit ? savedFish : allFish;
+  const fishToDisplay = showFavorit
+    ? favorites.filter((fav): fav is NookipediaFish => "rarity" in fav)
+    : allFish;
 
   const filteredFish = getFilteredFish(searchTerm, fishToDisplay);
 
@@ -146,7 +281,10 @@ export const filterBugs = (
   if (!cardContainer) return [];
   cardContainer.innerHTML = "";
 
-  const bugsToDisplay = showFavorit ? savedBugs : allBugs;
+  const bugsToDisplay = showFavorit
+    ? favorites.filter((fav): fav is NookipediaBugs => "rarity" in fav)
+    : allBugs;
+
   const filteredBugs = getFilteredBugs(searchTerm, bugsToDisplay);
 
   filteredBugs.forEach((bug) => {
@@ -168,4 +306,4 @@ export const getFilteredBugs = (
     });
   }
   return filteredBugs;
-};
+}; */

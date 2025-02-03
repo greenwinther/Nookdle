@@ -4,7 +4,7 @@
 
 // A function which handles search input updates with debounce
 // A function to handle search input updates with debounce
-export const handleSearchUpdate = (
+/* export const handleSearchUpdate = (
   searchfield: { searchInput: HTMLInputElement },
   updateDisplay: Function,
   currentSort: string,
@@ -15,7 +15,7 @@ export const handleSearchUpdate = (
     const search = searchfield.searchInput.value;
     updateDisplay(search, currentSort, showingSaved);
   }, 50);
-};
+}; */
 
 /* Old version 
  // A function which handles search input updates with debounce

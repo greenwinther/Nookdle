@@ -1,4 +1,4 @@
-import type { SortableField } from "../types/types";
+/* import type { SortableField } from "../types/types";
 
 export const setupSortButtons = (
   sortButtons: HTMLElement,
@@ -45,4 +45,4 @@ export const updateSortButtons = (sortBy: SortableField) => {
       button.classList.remove("active");
     }
   });
-};
+}; */

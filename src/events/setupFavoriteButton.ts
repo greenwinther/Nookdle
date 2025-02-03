@@ -3,13 +3,13 @@ export const setupFavoriteButton = (
   searchfield: { searchInput: HTMLInputElement },
   updateDisplay: Function,
   currentSort: string,
-  onlySaved: boolean
+  showFavorite: boolean
 ) => {
   button.addEventListener("click", () => {
-    onlySaved = !onlySaved;
+    showFavorite = !showFavorite;
     // Call the updateDisplay function to update the cards
     // Pass the showingSaved state to filter the items
-    updateDisplay(searchfield, currentSort, onlySaved);
+    updateDisplay(searchfield, currentSort, showFavorite);
   });
 };
 

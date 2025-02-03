@@ -1,5 +1,7 @@
 // Creates a main container with a dynamic class for different item types
-export const createContainer = (type: "card" | "fetch"): HTMLDivElement => {
+export const createContainer = (
+  type: "card" | "fetch" | "villagers" | "bugs" | "fish"
+): HTMLDivElement => {
   const container = document.createElement("div");
   container.className = `${type}-container`;
   return container;
@@ -7,6 +9,9 @@ export const createContainer = (type: "card" | "fetch"): HTMLDivElement => {
 
 export const cardContainer = createContainer("card");
 export const fetchContainer = createContainer("fetch");
+export const villagersContainer = createContainer("villagers");
+export const bugsContainer = createContainer("bugs");
+export const fishContainer = createContainer("fish");
 
 /* // Creates a main container with a dynamic class for different item types
 export const createContainer = (

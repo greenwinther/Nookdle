@@ -1,10 +1,22 @@
-import { filterBugs, filterFish, filterVillagers } from "./filter";
+/* import {
+  filterEntities,
+  createVillagerComparator,
+  isBug,
+  isFish,
+  isVillager,
+} from "./filter";
 import type { SortableField } from "./types/types";
-import { currentSort } from "./data/variable";
+import { currentSort } from "./data/dom";
 import { updateSortButtons } from "./events/sortButtonEvent";
 import { cardContainer } from "./createElements/createContainer";
+import { allBugs, allFish, allVillagers } from "./scripts/fetchVillagers";
+import {
+  createVillagerCard,
+  createBugCard,
+  createFishCard,
+} from "./createElements/createCard"; */
 
-export const updateVillagerDisplay = (
+/* export const updateVillagerDisplay = (
   searchTerm = "",
   sortBy: SortableField = currentSort,
   onlySaved: boolean = false
@@ -37,4 +49,4 @@ export const updateDisplay = (
   updateVillagerDisplay(searchTerm, sortBy, onlySaved);
   updateFishDisplay(searchTerm, onlySaved);
   updateBugsDisplay(searchTerm, onlySaved);
-};
+}; */

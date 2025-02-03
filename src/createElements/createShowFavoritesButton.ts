@@ -1,4 +1,4 @@
-export const createFavoriteButton = (): HTMLButtonElement => {
+export const createShowFavoritesButton = (): HTMLButtonElement => {
   const button = document.createElement("button");
   button.className = "favoriteBtn";
   button.textContent = "Show Favorite";
@@ -6,4 +6,4 @@ export const createFavoriteButton = (): HTMLButtonElement => {
   return button;
 };
 
-export const favoriteButton = createFavoriteButton();
+export const favoriteButton = createShowFavoritesButton();

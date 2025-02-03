@@ -3,21 +3,65 @@ import {
   fetchAllBugs,
   fetchAllFish,
 } from "../scripts/fetchVillagers";
-import { currentSort, showFavorite, mainContainer } from "../data/variable";
-import {
-  updateBugsDisplay,
-  updateFishDisplay,
-  updateVillagerDisplay,
-} from "../updateDisplay";
+import { mainContainer } from "../data/dom";
+
 import {
   villagersButton,
   bugsButton,
   fishButton,
 } from "../createElements/createFetchButton";
-import { searchfield } from "../createElements/createSearchField";
-import { loading } from "../createElements/createLoadingElement";
 
-// Fetch villagers only when button is clicked
+import { loading } from "../createElements/createLoadingElement";
+import { createCardsFromFetchedData } from "../createElements/createCard";
+import {
+  villagersContainer,
+  fishContainer,
+  bugsContainer,
+} from "../createElements/createContainer";
+
+export const setupFetchButton = (
+  button: HTMLButtonElement,
+  fetchFunction: () => Promise<any>,
+  errorMessage: string,
+  cardContainer: HTMLDivElement
+) => {
+  button.addEventListener("click", async () => {
+    try {
+      cardContainer.innerHTML = "";
+      mainContainer.appendChild(loading);
+      await fetchFunction();
+      loading.remove();
+      createCardsFromFetchedData();
+    } catch (error) {
+      console.error("Error:", error);
+      loading.textContent = errorMessage;
+    }
+  });
+};
+
+// Set up all buttons dynamically
+export const setupButtonEvents = () => {
+  setupFetchButton(
+    villagersButton,
+    fetchAllVillagers,
+    "Failed to load villagers",
+    villagersContainer
+  );
+  setupFetchButton(
+    bugsButton,
+    fetchAllBugs,
+    "Failed to load bugs",
+    bugsContainer
+  );
+  setupFetchButton(
+    fishButton,
+    fetchAllFish,
+    "Failed to load fish",
+    fishContainer
+  );
+};
+
+/* // Fetch villagers only when button is clicked
 export const setupVillagersButton = () => {
   villagersButton.addEventListener("click", async () => {
     try {
@@ -71,4 +115,4 @@ export const setupButtonEvents = () => {
   setupVillagersButton();
   setupBugsButton();
   setupFishButton();
-};
+}; */

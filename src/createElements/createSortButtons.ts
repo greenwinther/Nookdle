@@ -2,7 +2,7 @@
 export const createSortButtons = (): HTMLDivElement => {
   // Create Button Container
   const container = document.createElement("div");
-  container.className = "sort-buttons";
+  container.className = "sort-buttons-container";
 
   // Button state
   const buttonsConfig = [

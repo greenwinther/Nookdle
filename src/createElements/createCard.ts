@@ -2,15 +2,23 @@ import type {
   NookipediaBugs,
   NookipediaFish,
   NookipediaVillager,
+  NookipediaData,
 } from "../types/types";
-import { savedBugs, savedFish, savedVillagers } from "../data/variable";
+import { allVillagers, allBugs, allFish } from "../scripts/fetchVillagers";
+import {
+  bugsContainer,
+  fishContainer,
+  villagersContainer,
+} from "./createContainer";
+import { saveCardAsFavorite } from "../events/saveCardAsFavorite";
 
-// A generic function to create cards
-export const createCard = <T>(
-  item: T,
-  type: "villager" | "fish" | "bug",
-  savedItems: T[],
-  saveCallback: (item: T, saveButton: HTMLButtonElement) => void
+export const favorites: Array<
+  NookipediaVillager | NookipediaFish | NookipediaBugs
+> = [];
+
+export const createCard = (
+  data: NookipediaData,
+  type: "villager" | "fish" | "bug"
 ) => {
   // Create Card container
   const card = document.createElement("div");
@@ -18,101 +26,80 @@ export const createCard = <T>(
 
   // Create Image
   const image = document.createElement("img");
-  image.src = (item as any).image_url;
-  image.alt = (item as any).name;
+  image.src = data.image_url;
+  image.alt = data.name;
 
   // Create Name
   const name = document.createElement("h3");
-  name.textContent = (item as any).name;
+  name.textContent = data.name;
 
-  // Create Specific Details (e.g., Species, Rarity)
+  // Create additional info based on type
   const details = document.createElement("div");
   details.className = "details";
 
-  // Depending on the type, display different details
+  let additionalInfo = "";
+  // Type guard to check if data is a NookipediaVillager
   if (type === "villager") {
-    details.innerHTML = `
-        <p>Species: ${(item as NookipediaVillager).species}</p>
-        <p>Personality: ${(item as NookipediaVillager).personality}</p>
-        <p>Gender: ${(item as NookipediaVillager).gender}</p>
-        <p>Birthday: ${(item as NookipediaVillager).birthday_month} ${
-      (item as NookipediaVillager).birthday_day
-    }</p>
-        <p>Catchphrase: "${(item as NookipediaVillager).phrase}"</p>
-      `;
-  } else if (type === "fish" || type === "bug") {
-    details.innerHTML = `<p>Rarity: ${
-      (item as NookipediaFish | NookipediaBugs).rarity
-    }</p>`;
+    // Narrowing to NookipediaVillager
+    const villager = data as NookipediaVillager;
+    additionalInfo = `
+      <p>Species: ${villager.species}</p>
+      <p>Personality: ${villager.personality}</p>
+      <p>Gender: ${villager.gender}</p>
+      <p>Birthday: ${villager.birthday_month} ${villager.birthday_day}</p>
+      <p>Catchphrase: "${(data as NookipediaVillager).phrase}"</p>
+    `;
+    // Type guard to check if data is a NookipediaFish
+  } else if (type === "fish") {
+    // Narrowing to NookipediaFish
+    const fish = data as NookipediaFish;
+    additionalInfo = `<p>Rarity: ${fish.rarity}</p>`;
+    // Type guard to check if data is a NookipediaBugs
+  } else if (type === "bug") {
+    // Narrowing to NookipediaBugs
+    const bug = data as NookipediaBugs;
+    additionalInfo = `<p>Rarity: ${bug.rarity}</p>`;
   }
+  details.innerHTML = additionalInfo;
 
   // Create Save button
   const saveButton = document.createElement("button");
   saveButton.className = "save-button";
 
-  // Check if the item is already saved
-  const isSaved = savedItems.some(
-    (i) => (i as any).name === (item as any).name
-  );
-  saveButton.textContent = isSaved
-    ? `Remove from Saved`
-    : `Save ${type.charAt(0).toUpperCase() + type.slice(1)}`;
-
-  // Save/Remove button event listener
-  saveButton.addEventListener("click", () => {
-    saveCallback(item, saveButton);
-  });
-
   // Append all elements to the card
   card.append(image, name, details, saveButton);
+
+  // Call function to toggle favorite status
+  saveCardAsFavorite(card, data);
+
   return card;
 };
 
-export const createVillagerCard = (villager: NookipediaVillager) => {
-  return createCard(
-    villager,
-    "villager",
-    savedVillagers,
-    (item, saveButton) => {
-      const index = savedVillagers.findIndex((v) => v.name === item.name);
-      if (index !== -1) {
-        savedVillagers.splice(index, 1);
-        saveButton.textContent = "Save Villager";
-      } else {
-        savedVillagers.push(item);
-        saveButton.textContent = "Remove from Saved";
-      }
-    }
-  );
-};
+// Assuming this is triggered after fetching data (e.g., button click)
+export const createCardsFromFetchedData = () => {
+  // Create cards for villagers
+  allVillagers.forEach((villager) => {
+    const villagerCard = createCard(villager, "villager");
+    villagersContainer.appendChild(villagerCard); // Append to container
+  });
 
-export const createFishCard = (fish: NookipediaFish) => {
-  return createCard(fish, "fish", savedFish, (item, saveButton) => {
-    const index = savedFish.findIndex((f) => f.name === item.name);
-    if (index !== -1) {
-      savedFish.splice(index, 1);
-      saveButton.textContent = "Save Fish";
-    } else {
-      savedFish.push(item);
-      saveButton.textContent = "Remove from Saved";
-    }
+  // Create cards for fish
+  allFish.forEach((fish) => {
+    const fishCard = createCard(fish, "fish");
+    fishContainer.appendChild(fishCard); // Append to container
+  });
+
+  // Create cards for bugs
+  allBugs.forEach((bug) => {
+    const bugCard = createCard(bug, "bug");
+    bugsContainer.appendChild(bugCard); // Append to container
   });
 };
 
-export const createBugCard = (bug: NookipediaBugs) => {
-  return createCard(bug, "bug", savedBugs, (item, saveButton) => {
-    const index = savedBugs.findIndex((b) => b.name === item.name);
-    if (index !== -1) {
-      savedBugs.splice(index, 1);
-      saveButton.textContent = "Save Bug";
-    } else {
-      savedBugs.push(item);
-      saveButton.textContent = "Remove from Saved";
-    }
-  });
-};
+/* export const favorites: Array<
+  NookipediaVillager | NookipediaFish | NookipediaBugs
+> = [];
 
-/* Old functions
 // Functions which creates the villager cards
 export const createVillagerCard = (villager: NookipediaVillager) => {
   // Create Card container
@@ -146,19 +133,19 @@ export const createVillagerCard = (villager: NookipediaVillager) => {
   saveButton.className = "save-button";
 
   // Check if the villager is already saved
-  const isSaved = savedVillagers.some((v) => v.name === villager.name);
+  const isSaved = favorites.some((v) => v.name === villager.name);
   saveButton.textContent = isSaved ? "Remove from Saved" : "Save Villager";
 
   // Find the index of the villager in the savedVillagers array
   saveButton.addEventListener("click", () => {
-    const index = savedVillagers.findIndex((v) => v.name === villager.name);
+    const index = favorites.findIndex((v) => v.name === villager.name);
 
     // Villager is saved, remove it |  Villager is not saved, add it
     if (index !== -1) {
-      savedVillagers.splice(index, 1);
+      favorites.splice(index, 1);
       saveButton.textContent = "Save Villager";
     } else {
-      savedVillagers.push(villager);
+      favorites.push(villager);
       saveButton.textContent = "Remove from Saved";
     }
   });
@@ -191,19 +178,19 @@ export const createFishCard = (fish: NookipediaFish) => {
   saveButton.className = "save-button";
 
   // Check if the fish is already saved
-  const isSaved = savedFish.some((f) => f.name === fish.name);
+  const isSaved = favorites.some((f) => f.name === fish.name);
   saveButton.textContent = isSaved ? "Remove from Saved" : "Save Fish";
 
   // Find the index of the fish in the savedFish array
   saveButton.addEventListener("click", () => {
-    const index = savedFish.findIndex((f) => f.name === fish.name);
+    const index = favorites.findIndex((f) => f.name === fish.name);
 
     // Fish is saved, remove it | Fish is not saved, add it
     if (index !== -1) {
-      savedFish.splice(index, 1);
+      favorites.splice(index, 1);
       saveButton.textContent = "Save Fish";
     } else {
-      savedFish.push(fish);
+      favorites.push(fish);
       saveButton.textContent = "Remove from Saved";
     }
   });
@@ -236,19 +223,19 @@ export const createBugCard = (bug: NookipediaBugs) => {
   saveButton.className = "save-button";
 
   // Check if the bug is already saved
-  const isSaved = savedBugs.some((b) => b.name === bug.name);
+  const isSaved = favorites.some((b) => b.name === bug.name);
   saveButton.textContent = isSaved ? "Remove from Saved" : "Save Bug";
 
   // Find the index of the bug in the savedBugs array
   saveButton.addEventListener("click", () => {
-    const index = savedBugs.findIndex((b) => b.name === bug.name);
+    const index = favorites.findIndex((b) => b.name === bug.name);
 
     // Bug is saved, remove it | Bug is not saved, add it
     if (index !== -1) {
-      savedBugs.splice(index, 1);
+      favorites.splice(index, 1);
       saveButton.textContent = "Save Bug";
     } else {
-      savedBugs.push(bug);
+      favorites.push(bug);
       saveButton.textContent = "Remove from Saved";
     }
   });
