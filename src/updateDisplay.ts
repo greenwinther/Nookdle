@@ -15,16 +15,20 @@ export const updateVillagerDisplay = (
 
 export const updateFishDisplay = (
   searchTerm = "",
+  sortBy: SortableField = currentSort,
   onlySaved: boolean = false
 ) => {
   filterFish(searchTerm, onlySaved);
+  updateSortButtons(sortBy);
 };
 
 export const updateBugsDisplay = (
   searchTerm = "",
+  sortBy: SortableField = currentSort,
   onlySaved: boolean = false
 ) => {
   filterBugs(searchTerm, onlySaved);
+  updateSortButtons(sortBy);
 };
 
 export const updateDisplay = (
@@ -33,6 +37,6 @@ export const updateDisplay = (
   onlySaved: boolean = false
 ) => {
   updateVillagerDisplay(searchTerm, sortBy, onlySaved);
-  updateFishDisplay(searchTerm, onlySaved);
-  updateBugsDisplay(searchTerm, onlySaved);
+  updateFishDisplay(searchTerm, sortBy, onlySaved);
+  updateBugsDisplay(searchTerm, sortBy, onlySaved);
 };
