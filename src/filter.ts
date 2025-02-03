@@ -17,13 +17,13 @@ import { cardContainer } from "./createElements/createContainer";
 export const filterVillagers = (
   searchTerm: string,
   sortBy: SortableField,
-  onlySaved: boolean = false
+  showFavorit: boolean = false
 ): NookipediaVillager[] => {
   if (!cardContainer) return [];
   cardContainer.innerHTML = "";
 
   // Determines which villager-list will be displayed: saved or all
-  const villagersToDisplay = onlySaved ? savedVillagers : allVillagers;
+  const villagersToDisplay = showFavorit ? savedVillagers : allVillagers;
 
   // Filter the villagers based on the search term and sort order
   const filteredVillagers = getFilteredVillagers(
@@ -109,12 +109,12 @@ export const getFilteredVillagers = (
 
 export const filterFish = (
   searchTerm: string,
-  onlySaved: boolean = false
+  showFavorit: boolean = false
 ): NookipediaFish[] => {
   if (!cardContainer) return [];
   cardContainer.innerHTML = "";
 
-  const fishToDisplay = onlySaved ? savedFish : allFish;
+  const fishToDisplay = showFavorit ? savedFish : allFish;
 
   const filteredFish = getFilteredFish(searchTerm, fishToDisplay);
 
@@ -141,12 +141,12 @@ export const getFilteredFish = (
 
 export const filterBugs = (
   searchTerm: string,
-  onlySaved: boolean = false
+  showFavorit: boolean = false
 ): NookipediaBugs[] => {
   if (!cardContainer) return [];
   cardContainer.innerHTML = "";
 
-  const bugsToDisplay = onlySaved ? savedBugs : allBugs;
+  const bugsToDisplay = showFavorit ? savedBugs : allBugs;
   const filteredBugs = getFilteredBugs(searchTerm, bugsToDisplay);
 
   filteredBugs.forEach((bug) => {

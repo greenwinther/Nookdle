@@ -5,3 +5,5 @@ export const createLoadingElement = (): HTMLDivElement => {
   loading.textContent = "Please give it a sec...";
   return loading;
 };
+
+export const loading = createLoadingElement();

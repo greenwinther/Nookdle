@@ -5,3 +5,5 @@ export const createFavoriteButton = (): HTMLButtonElement => {
   button.classList.add("sort-button");
   return button;
 };
+
+export const favoriteButton = createFavoriteButton();

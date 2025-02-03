@@ -17,3 +17,5 @@ export const createSearchField = () => {
     searchInput,
   };
 };
+
+export const searchfield = createSearchField();

@@ -29,3 +29,5 @@ export const createSortButtons = (): HTMLDivElement => {
 
   return container;
 };
+
+export const sortButtons = createSortButtons();

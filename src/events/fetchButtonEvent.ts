@@ -3,13 +3,7 @@ import {
   fetchAllBugs,
   fetchAllFish,
 } from "../scripts/fetchVillagers";
-import {
-  searchfield,
-  loading,
-  currentSort,
-  onlySaved,
-  mainContainer,
-} from "../data/variable";
+import { currentSort, showFavorite, mainContainer } from "../data/variable";
 import {
   updateBugsDisplay,
   updateFishDisplay,
@@ -20,6 +14,8 @@ import {
   bugsButton,
   fishButton,
 } from "../createElements/createFetchButton";
+import { searchfield } from "../createElements/createSearchField";
+import { loading } from "../createElements/createLoadingElement";
 
 // Fetch villagers only when button is clicked
 export const setupVillagersButton = () => {
@@ -31,7 +27,7 @@ export const setupVillagersButton = () => {
       updateVillagerDisplay(
         searchfield.searchInput.value,
         currentSort,
-        onlySaved
+        showFavorite
       );
     } catch (error) {
       console.error("Error:", error);
@@ -47,7 +43,7 @@ export const setupBugsButton = () => {
       mainContainer.appendChild(loading);
       await fetchAllBugs();
       loading.remove();
-      updateBugsDisplay(searchfield.searchInput.value, onlySaved);
+      updateBugsDisplay(searchfield.searchInput.value, showFavorite);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load bugs";
@@ -62,7 +58,7 @@ export const setupFishButton = () => {
       mainContainer.appendChild(loading);
       await fetchAllFish();
       loading.remove();
-      updateFishDisplay(searchfield.searchInput.value, onlySaved);
+      updateFishDisplay(searchfield.searchInput.value, showFavorite);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load fish";

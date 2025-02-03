@@ -1,9 +1,7 @@
 import { setupMainUI, setupHeaderUI } from "./ui";
 import {
-  searchfield,
-  sortButtons,
   currentSort,
-  onlySaved,
+  showFavorite,
   mainContainer,
   headerContainer,
 } from "./data/variable";
@@ -12,11 +10,13 @@ import { handleSearchUpdate } from "./events/debouncer";
 import { setupButtonEvents } from "./events/fetchButtonEvent";
 import { setupFavoriteButton } from "./events/setupFavoriteButton";
 import { setupSortButtons } from "./events/sortButtonEvent";
-import { favoriteButton } from "./data/variable";
+import { favoriteButton } from "./createElements/createFavoriteButton";
 import {
   cardContainer,
   fetchContainer,
 } from "./createElements/createContainer";
+import { searchfield } from "./createElements/createSearchField";
+import { sortButtons } from "./createElements/createSortButtons";
 
 export const initApp = async () => {
   setupMainUI(
@@ -36,7 +36,7 @@ export const initApp = async () => {
     searchfield,
     updateDisplay,
     currentSort,
-    onlySaved
+    showFavorite
   );
 
   setupFavoriteButton(
@@ -44,11 +44,11 @@ export const initApp = async () => {
     searchfield,
     updateDisplay,
     currentSort,
-    onlySaved
+    showFavorite
   );
 
   // Handle search input event for searching villagers
   searchfield.searchInput.addEventListener("input", () => {
-    handleSearchUpdate(searchfield, updateDisplay, currentSort, onlySaved);
+    handleSearchUpdate(searchfield, updateDisplay, currentSort, showFavorite);
   });
 };
