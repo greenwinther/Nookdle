@@ -21,7 +21,6 @@ export const setupSortButtons = (
 
       // Set the current sort state correctly
       currentSort = `${sortKey}-${currentDirection}` as SortableField;
-      /*       setCurrentSort(newSort); */
       updateSortButtons(currentSort);
       handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
     }

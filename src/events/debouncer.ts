@@ -1,15 +1,3 @@
-/* Old version 
- // A function which handles search input updates with debounce
-  // If I type Ace real quick I dont want it to search on A then AC then ACE.
-  // This gives it a slight delay after I make an input
-  const handleUpdate = () => {
-    clearTimeout((handleUpdate as any).timeout);
-    (handleUpdate as any).timeout = setTimeout(() => {
-      const search = searchfield.searchInput.value;
-      updateDisplay(search, currentSort, showingSaved);
-    }, 50);
-  }; */
-
 // A function which handles search input updates with debounce
 // If I type Ace real quick I dont want it to search on A then AC then ACE.
 // This gives it a slight delay after I make an input
@@ -28,3 +16,15 @@ export const handleSearchUpdate = (
     updateDisplay(search, currentSort, showingSaved);
   }, 50);
 };
+
+/* Old version 
+ // A function which handles search input updates with debounce
+  // If I type Ace real quick I dont want it to search on A then AC then ACE.
+  // This gives it a slight delay after I make an input
+  const handleUpdate = () => {
+    clearTimeout((handleUpdate as any).timeout);
+    (handleUpdate as any).timeout = setTimeout(() => {
+      const search = searchfield.searchInput.value;
+      updateDisplay(search, currentSort, showingSaved);
+    }, 50);
+  }; */

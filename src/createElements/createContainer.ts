@@ -25,6 +25,6 @@ export const createContainer = (
   type: "villagers" | "bugs" | "fish"
 ): HTMLDivElement => {
   const container = document.createElement("div");
-  container.className = `${type}-grid`;
+  container.className = `${type}-container`;
   return container;
 };
