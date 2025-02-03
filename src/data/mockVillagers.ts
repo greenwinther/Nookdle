@@ -1,7 +1,5 @@
-import { Villager } from "../types/types";
-
-// Test vills to make sure the program works before I fetch any data
-export const mockVillagers: Villager[] = [
+/* // Test vills to make sure the program works before I fetch any data
+const mockVillagers: Villager[] = [
   {
     name: "Ribbot",
     gender: "Male",
@@ -40,4 +38,5 @@ export const mockVillagers: Villager[] = [
   },
 ];
 
-export let guessedVillagers: Villager[] = [];
+let guessedVillagers: Villager[] = [];
+ */
