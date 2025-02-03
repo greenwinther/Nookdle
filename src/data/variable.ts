@@ -24,10 +24,16 @@ export const savedVillagers: NookipediaVillager[] = [];
 export const savedFish: NookipediaFish[] = [];
 export const savedBugs: NookipediaBugs[] = [];
 
-export const headerContainer = document.querySelector(".header-container");
-export const mainContainer = document.querySelector(".main-container");
-export const footerContainer = document.querySelector(".footer-container");
-export const appContainer = document.getElementById("app")!;
+export const headerContainer = document.querySelector(
+  ".header-container"
+) as HTMLElement;
+export const mainContainer = document.querySelector(
+  ".main-container"
+) as HTMLElement;
+export const footerContainer = document.querySelector(
+  ".footer-container"
+) as HTMLElement;
+export const appContainer = document.getElementById("app") as HTMLDivElement;
 export const searchfield = createSearchField();
 export const sortButtons = createSortButtons();
 export const villagersContainer = createContainer("villagers");
