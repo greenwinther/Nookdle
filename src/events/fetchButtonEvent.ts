@@ -23,15 +23,34 @@ export const setupFetchButton = (
   button: HTMLButtonElement,
   fetchFunction: () => Promise<any>,
   errorMessage: string,
-  cardContainer: HTMLDivElement
+  villagersContainer: HTMLDivElement,
+  bugsContainer: HTMLDivElement,
+  fishContainer: HTMLDivElement
 ) => {
   button.addEventListener("click", async () => {
     try {
-      cardContainer.innerHTML = "";
+      // Clear all containers first
+      villagersContainer.innerHTML = "";
+      bugsContainer.innerHTML = "";
+      fishContainer.innerHTML = "";
+
+      // Show the loading indicator
       mainContainer.appendChild(loading);
+
+      // Fetch the data
       await fetchFunction();
+
+      // Remove the loading indicator
       loading.remove();
-      createCardsFromFetchedData();
+
+      // Check which button was clicked, and append the corresponding data to the relevant container
+      if (button === villagersButton) {
+        createCardsFromFetchedData(villagersContainer, "villager");
+      } else if (button === bugsButton) {
+        createCardsFromFetchedData(bugsContainer, "bug");
+      } else if (button === fishButton) {
+        createCardsFromFetchedData(fishContainer, "fish");
+      }
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = errorMessage;
@@ -45,18 +64,24 @@ export const setupButtonEvents = () => {
     villagersButton,
     fetchAllVillagers,
     "Failed to load villagers",
-    villagersContainer
+    villagersContainer,
+    bugsContainer,
+    fishContainer
   );
   setupFetchButton(
     bugsButton,
     fetchAllBugs,
     "Failed to load bugs",
-    bugsContainer
+    villagersContainer,
+    bugsContainer,
+    fishContainer
   );
   setupFetchButton(
     fishButton,
     fetchAllFish,
     "Failed to load fish",
+    villagersContainer,
+    bugsContainer,
     fishContainer
   );
 };

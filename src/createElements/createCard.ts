@@ -5,11 +5,6 @@ import type {
   NookipediaData,
 } from "../types/types";
 import { allVillagers, allBugs, allFish } from "../scripts/fetchVillagers";
-import {
-  bugsContainer,
-  fishContainer,
-  villagersContainer,
-} from "./createContainer";
 import { saveCardAsFavorite } from "../events/saveCardAsFavorite";
 
 export const favorites: Array<
@@ -76,23 +71,24 @@ export const createCard = (
 };
 
 // Assuming this is triggered after fetching data (e.g., button click)
-export const createCardsFromFetchedData = () => {
-  // Create cards for villagers
-  allVillagers.forEach((villager) => {
-    const villagerCard = createCard(villager, "villager");
-    villagersContainer.appendChild(villagerCard); // Append to container
-  });
+export const createCardsFromFetchedData = (
+  container: HTMLDivElement,
+  type: "villager" | "bug" | "fish"
+) => {
+  let dataToUse: NookipediaData[] = [];
 
-  // Create cards for fish
-  allFish.forEach((fish) => {
-    const fishCard = createCard(fish, "fish");
-    fishContainer.appendChild(fishCard); // Append to container
-  });
+  if (type === "villager") {
+    dataToUse = allVillagers;
+  } else if (type === "bug") {
+    dataToUse = allBugs;
+  } else if (type === "fish") {
+    dataToUse = allFish;
+  }
 
-  // Create cards for bugs
-  allBugs.forEach((bug) => {
-    const bugCard = createCard(bug, "bug");
-    bugsContainer.appendChild(bugCard); // Append to container
+  // Create cards for the relevant data
+  dataToUse.forEach((data) => {
+    const card = createCard(data, type);
+    container.appendChild(card);
   });
 };
 
