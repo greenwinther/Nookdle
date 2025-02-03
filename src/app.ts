@@ -25,8 +25,6 @@ export const initApp = async () => {
     fishContainer
   );
 
-  console.log(sortButtons);
-
   setupButtonEvents();
 
   setupSortButtons(
