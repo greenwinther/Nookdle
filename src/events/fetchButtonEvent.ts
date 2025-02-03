@@ -2,22 +2,24 @@ import {
   fetchAllVillagers,
   fetchAllBugs,
   fetchAllFish,
-} from "./scripts/fetchVillagers";
+} from "../scripts/fetchVillagers";
 import {
   appContainer,
   searchfield,
-  villagersButton,
-  bugsButton,
-  fishButton,
   loading,
   currentSort,
   showingSaved,
-} from "./variable";
+} from "../data/variable";
 import {
   updateBugsDisplay,
   updateFishDisplay,
   updateVillagerDisplay,
-} from "./updateDisplay";
+} from "../updateDisplay";
+import {
+  villagersButton,
+  bugsButton,
+  fishButton,
+} from "../createElements/createFetchButton";
 
 // Fetch villagers only when button is clicked
 export const setupVillagersButton = () => {

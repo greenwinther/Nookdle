@@ -1,7 +1,7 @@
 import { filterBugs, filterFish, filterVillagers } from "./utils";
 import type { SortableField } from "./types/types";
-import { currentSort } from "./variable";
-import { updateSortButtons } from "./sortButtonEvent";
+import { currentSort } from "./data/variable";
+import { updateSortButtons } from "./events/sortButtonEvent";
 
 export const updateVillagerDisplay = (
   searchTerm = "",

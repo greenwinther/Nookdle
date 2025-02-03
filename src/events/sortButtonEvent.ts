@@ -1,12 +1,11 @@
-import { currentSort } from "./variable";
 import { handleSearchUpdate } from "./debouncer";
-import type { SortableField } from "./types/types";
+import type { SortableField } from "../types/types";
 
 export const setupSortButtons = (
   sortButtons: HTMLElement,
   searchfield: any,
   updateDisplay: any,
-  newSort: SortableField = currentSort,
+  currentSort: SortableField,
   showingSaved: boolean
 ) => {
   sortButtons.addEventListener("click", (e) => {
@@ -21,10 +20,10 @@ export const setupSortButtons = (
       }
 
       // Set the current sort state correctly
-      newSort = `${sortKey}-${currentDirection}` as SortableField;
+      currentSort = `${sortKey}-${currentDirection}` as SortableField;
       /*       setCurrentSort(newSort); */
-      updateSortButtons(newSort);
-      handleSearchUpdate(searchfield, updateDisplay, newSort, showingSaved);
+      updateSortButtons(currentSort);
+      handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
     }
   });
 };

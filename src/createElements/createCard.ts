@@ -2,8 +2,8 @@ import type {
   NookipediaBugs,
   NookipediaFish,
   NookipediaVillager,
-} from "./types/types";
-import { savedBugs, savedFish, savedVillagers } from "./ui";
+} from "../types/types";
+import { savedBugs, savedFish, savedVillagers } from "../data/variable";
 
 /* Old functions
 // Functions which creates the villager cards

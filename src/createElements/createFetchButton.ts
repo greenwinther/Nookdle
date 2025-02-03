@@ -25,6 +25,7 @@ export const createFetchFishButton = (appContainer: HTMLElement) => {
   appContainer.appendChild(button);
   return button;
 }; */
+import { appContainer } from "../data/variable";
 
 export const createFetchButton = (
   appContainer: HTMLElement,
@@ -37,3 +38,19 @@ export const createFetchButton = (
   appContainer.appendChild(button);
   return button;
 };
+
+export const villagersButton = createFetchButton(
+  appContainer,
+  "Load Villagers",
+  "fetch-villagers-btn"
+);
+export const bugsButton = createFetchButton(
+  appContainer,
+  "Load Bugs",
+  "fetch-bugs-btn"
+);
+export const fishButton = createFetchButton(
+  appContainer,
+  "Load Fish",
+  "fetch-fish-btn"
+);

@@ -5,12 +5,12 @@ import type {
   SortableField,
 } from "./types/types";
 import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
-import { savedVillagers, savedBugs, savedFish } from "./ui";
+import { savedBugs, savedFish, savedVillagers } from "./data/variable";
 import {
   createBugCard,
   createFishCard,
   createVillagerCard,
-} from "./createCard";
+} from "./createElements/createCard";
 
 // Function which filters and displays villagers based on search term, sorting, and saved status
 export const filterVillagers = (

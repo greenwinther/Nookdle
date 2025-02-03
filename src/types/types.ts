@@ -66,6 +66,19 @@ export type NookipediaBugs = NookipediaCreature & {
   sell_flick: number;
 };
 
+// Type for sortable fields (buttons)
+export type SortableField =
+  | "name-asc"
+  | "name-desc"
+  | "species-asc"
+  | "species-desc"
+  | "personality-asc"
+  | "personality-desc"
+  | "gender-asc"
+  | "gender-desc"
+  | "birthday-asc"
+  | "birthday-desc";
+
 /* export type NookipediaFish = {
   url: string;
   name: string;
@@ -99,16 +112,3 @@ export type NookipediaBugs = {
   tank_length: number;
   catchphrases: string[];
 }; */
-
-// Type for sortable fields (buttons)
-export type SortableField =
-  | "name-asc"
-  | "name-desc"
-  | "species-asc"
-  | "species-desc"
-  | "personality-asc"
-  | "personality-desc"
-  | "gender-asc"
-  | "gender-desc"
-  | "birthday-asc"
-  | "birthday-desc";

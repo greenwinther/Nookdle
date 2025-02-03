@@ -8,12 +8,12 @@ import {
   fishContainer,
   currentSort,
   showingSaved,
-} from "./variable";
+} from "./data/variable";
 import { updateDisplay } from "./updateDisplay";
-import { handleSearchUpdate } from "./debouncer";
-import { setupButtonEvents } from "./fetchButtonEvent";
-import { setupShowSavedVillagersButton } from "./savedVillagers";
-import { setupSortButtons } from "./sortButtonEvent";
+import { handleSearchUpdate } from "./events/debouncer";
+import { setupButtonEvents } from "./events/fetchButtonEvent";
+import { setupShowSavedVillagersButton } from "./events/savedVillagers";
+import { setupSortButtons } from "./events/sortButtonEvent";
 
 export const initApp = async () => {
   setupAppUI(
