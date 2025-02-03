@@ -7,7 +7,7 @@ import {
   searchfield,
   loading,
   currentSort,
-  showingSaved,
+  onlySaved,
   mainContainer,
 } from "../data/variable";
 import {
@@ -31,7 +31,7 @@ export const setupVillagersButton = () => {
       updateVillagerDisplay(
         searchfield.searchInput.value,
         currentSort,
-        showingSaved
+        onlySaved
       );
     } catch (error) {
       console.error("Error:", error);
@@ -47,7 +47,7 @@ export const setupBugsButton = () => {
       mainContainer.appendChild(loading);
       await fetchAllBugs();
       loading.remove();
-      updateBugsDisplay(searchfield.searchInput.value, showingSaved);
+      updateBugsDisplay(searchfield.searchInput.value, onlySaved);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load bugs";
@@ -62,7 +62,7 @@ export const setupFishButton = () => {
       mainContainer.appendChild(loading);
       await fetchAllFish();
       loading.remove();
-      updateFishDisplay(searchfield.searchInput.value, showingSaved);
+      updateFishDisplay(searchfield.searchInput.value, onlySaved);
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = "Failed to load fish";

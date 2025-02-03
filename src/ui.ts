@@ -5,22 +5,14 @@ export const setupMainUI = (
   mainContainer: HTMLElement,
   searchfield: ReturnType<typeof createSearchField>,
   sortButtons: HTMLDivElement,
-  villagersContainer: HTMLDivElement,
-  bugsContainer: HTMLDivElement,
-  fishContainer: HTMLDivElement,
-  villagersButton: HTMLButtonElement,
-  fishButton: HTMLButtonElement,
-  bugsButton: HTMLButtonElement
+  cardContainer: HTMLDivElement,
+  fetchContainer: HTMLDivElement
 ) => {
   mainContainer.append(
     searchfield.container,
     sortButtons,
-    villagersContainer,
-    bugsContainer,
-    fishContainer,
-    villagersButton,
-    bugsButton,
-    fishButton
+    cardContainer,
+    fetchContainer
   );
 };
 

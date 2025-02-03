@@ -1,3 +1,5 @@
+import { fetchContainer } from "./createContainer";
+
 export const createFetchButton = (label: string, className: string) => {
   const button = document.createElement("button");
   button.textContent = label;
@@ -11,6 +13,9 @@ export const villagersButton = createFetchButton(
 );
 export const bugsButton = createFetchButton("Load Bugs", "fetch-bugs-btn");
 export const fishButton = createFetchButton("Load Fish", "fetch-fish-btn");
+fetchContainer.appendChild(villagersButton);
+fetchContainer.appendChild(bugsButton);
+fetchContainer.appendChild(fishButton);
 
 /* Old functions
 // Function to create a button for fetching villagers

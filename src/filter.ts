@@ -5,19 +5,13 @@ import type {
   SortableField,
 } from "./types/types";
 import { allVillagers, allBugs, allFish } from "./scripts/fetchVillagers";
-import {
-  savedBugs,
-  savedFish,
-  savedVillagers,
-  villagersContainer,
-  bugsContainer,
-  fishContainer,
-} from "./data/variable";
+import { savedBugs, savedFish, savedVillagers } from "./data/variable";
 import {
   createBugCard,
   createFishCard,
   createVillagerCard,
 } from "./createElements/createCard";
+import { cardContainer } from "./createElements/createContainer";
 
 // Function which filters and displays villagers based on search term, sorting, and saved status
 export const filterVillagers = (
@@ -25,8 +19,8 @@ export const filterVillagers = (
   sortBy: SortableField,
   onlySaved: boolean = false
 ): NookipediaVillager[] => {
-  if (!villagersContainer) return [];
-  villagersContainer.innerHTML = "";
+  if (!cardContainer) return [];
+  cardContainer.innerHTML = "";
 
   // Determines which villager-list will be displayed: saved or all
   const villagersToDisplay = onlySaved ? savedVillagers : allVillagers;
@@ -36,7 +30,7 @@ export const filterVillagers = (
 
   // Create and append cards for each filtered villager
   filtered.forEach((villager) => {
-    villagersContainer.appendChild(createVillagerCard(villager));
+    cardContainer.appendChild(createVillagerCard(villager));
   });
 
   return filtered;
@@ -113,15 +107,15 @@ export const filterFish = (
   searchTerm: string,
   onlySaved: boolean = false
 ): NookipediaFish[] => {
-  if (!fishContainer) return [];
-  fishContainer.innerHTML = "";
+  if (!cardContainer) return [];
+  cardContainer.innerHTML = "";
 
   const fishToDisplay = onlySaved ? savedFish : allFish;
 
   const filteredFish = getFilteredFish(searchTerm, fishToDisplay);
 
   filteredFish.forEach((fish) => {
-    fishContainer.appendChild(createFishCard(fish));
+    cardContainer.appendChild(createFishCard(fish));
   });
   return filteredFish;
 };
@@ -145,14 +139,14 @@ export const filterBugs = (
   searchTerm: string,
   onlySaved: boolean = false
 ): NookipediaBugs[] => {
-  if (!bugsContainer) return [];
-  bugsContainer.innerHTML = "";
+  if (!cardContainer) return [];
+  cardContainer.innerHTML = "";
 
   const bugsToDisplay = onlySaved ? savedBugs : allBugs;
   const filteredBugs = getFilteredBugs(searchTerm, bugsToDisplay);
 
   filteredBugs.forEach((bug) => {
-    bugsContainer.appendChild(createBugCard(bug));
+    cardContainer.appendChild(createBugCard(bug));
   });
   return filteredBugs;
 };

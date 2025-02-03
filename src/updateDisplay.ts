@@ -2,6 +2,7 @@ import { filterBugs, filterFish, filterVillagers } from "./filter";
 import type { SortableField } from "./types/types";
 import { currentSort } from "./data/variable";
 import { updateSortButtons } from "./events/sortButtonEvent";
+import { cardContainer } from "./createElements/createContainer";
 
 export const updateVillagerDisplay = (
   searchTerm = "",
@@ -15,20 +16,18 @@ export const updateVillagerDisplay = (
 
 export const updateFishDisplay = (
   searchTerm = "",
-  sortBy: SortableField = currentSort,
+
   onlySaved: boolean = false
 ) => {
   filterFish(searchTerm, onlySaved);
-  updateSortButtons(sortBy);
 };
 
 export const updateBugsDisplay = (
   searchTerm = "",
-  sortBy: SortableField = currentSort,
+
   onlySaved: boolean = false
 ) => {
   filterBugs(searchTerm, onlySaved);
-  updateSortButtons(sortBy);
 };
 
 export const updateDisplay = (
@@ -36,7 +35,8 @@ export const updateDisplay = (
   sortBy: SortableField = currentSort,
   onlySaved: boolean = false
 ) => {
+  cardContainer.innerHTML = "";
   updateVillagerDisplay(searchTerm, sortBy, onlySaved);
-  updateFishDisplay(searchTerm, sortBy, onlySaved);
-  updateBugsDisplay(searchTerm, sortBy, onlySaved);
+  updateFishDisplay(searchTerm, onlySaved);
+  updateBugsDisplay(searchTerm, onlySaved);
 };
