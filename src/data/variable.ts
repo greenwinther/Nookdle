@@ -13,9 +13,6 @@ import { createFavoriteButton } from "../createElements/createFavoriteButton";
 export let currentSort: SortableField = "name-asc";
 
 export let showingSaved: boolean = false;
-export const setShowingSaved = (value: boolean) => {
-  showingSaved = value;
-};
 
 export const savedVillagers: NookipediaVillager[] = [];
 export const savedFish: NookipediaFish[] = [];

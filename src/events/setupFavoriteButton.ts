@@ -1,5 +1,6 @@
 import { handleSearchUpdate } from "./debouncer";
-import { setShowingSaved } from "../data/variable";
+
+let showingSaved: boolean = false;
 
 export const setupFavoriteButton = (
   button: HTMLButtonElement,
@@ -9,12 +10,15 @@ export const setupFavoriteButton = (
   showingSaved: boolean
 ) => {
   button.addEventListener("click", () => {
-    setShowingSaved(!showingSaved);
-    handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
+    // Toggle the showingSaved state
+
+    // Call the updateDisplay function to update the cards
+    // Pass the showingSaved state to filter the items
+    handleSearchUpdate(searchfield, updateDisplay, currentSort, !showingSaved);
   });
 };
 
-/* 
+/* Old function
 // Function to set up the show saved villagers button event
 export const setupFavoriteButton = () => {
   const showSavedVillagers = document.getElementById("showSavedVillagersBtn");

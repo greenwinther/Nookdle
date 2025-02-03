@@ -1,4 +1,4 @@
-import { filterBugs, filterFish, filterVillagers } from "./utils";
+import { filterBugs, filterFish, filterVillagers } from "./filter";
 import type { SortableField } from "./types/types";
 import { currentSort } from "./data/variable";
 import { updateSortButtons } from "./events/sortButtonEvent";

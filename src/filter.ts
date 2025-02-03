@@ -33,6 +33,8 @@ export const filterVillagers = (
 
   // Filter the villagers based on the search term and sort order
   const filtered = getFilteredVillagers(searchTerm, sortBy, villagersToDisplay);
+
+  // Create and append cards for each filtered villager
   filtered.forEach((villager) => {
     villagersContainer.appendChild(createVillagerCard(villager));
   });
