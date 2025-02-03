@@ -1,4 +1,4 @@
-import { currentSort, setCurrentSort } from "./variable";
+import { currentSort } from "./variable";
 import { handleSearchUpdate } from "./debouncer";
 import type { SortableField } from "./types/types";
 
@@ -22,7 +22,7 @@ export const setupSortButtons = (
 
       // Set the current sort state correctly
       newSort = `${sortKey}-${currentDirection}` as SortableField;
-      setCurrentSort(newSort);
+      /*       setCurrentSort(newSort); */
       updateSortButtons(newSort);
       handleSearchUpdate(searchfield, updateDisplay, newSort, showingSaved);
     }
