@@ -8,10 +8,10 @@ import { createContainer } from "./createContainer";
 import { SortableField } from "./types/types";
 
 export let currentSort: SortableField = "name-asc";
-export const getCurrentSort = () => currentSort;
+/* export const getCurrentSort = () => currentSort;
 export const setCurrentSort = (newSort: SortableField) => {
   currentSort = newSort;
-};
+}; */
 
 export let showingSaved: boolean = false;
 export const setShowingSaved = (value: boolean) => {
