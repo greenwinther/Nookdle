@@ -6,7 +6,7 @@ body {
     background-color: #f0f0f0;
   }
   
-  #app {
+  .main {
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -37,7 +37,7 @@ body {
   }
   
 
-  .villagers-grid {
+  .villagers-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
@@ -134,8 +134,8 @@ body {
       }
     }
   }
-  .fish-grid,
-.bugs-grid {
+  .fish-container,
+.bugs-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;

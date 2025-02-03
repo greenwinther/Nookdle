@@ -8,12 +8,9 @@ import type {
   NookipediaFish,
   NookipediaVillager,
 } from "../types/types";
+import { createFavoriteButton } from "../createElements/createFavoriteButton";
 
 export let currentSort: SortableField = "name-asc";
-/* export const getCurrentSort = () => currentSort;
-export const setCurrentSort = (newSort: SortableField) => {
-  currentSort = newSort;
-}; */
 
 export let showingSaved: boolean = false;
 export const setShowingSaved = (value: boolean) => {
@@ -33,10 +30,10 @@ export const mainContainer = document.querySelector(
 export const footerContainer = document.querySelector(
   ".footer-container"
 ) as HTMLElement;
-export const appContainer = document.getElementById("app") as HTMLDivElement;
 export const searchfield = createSearchField();
 export const sortButtons = createSortButtons();
 export const villagersContainer = createContainer("villagers");
 export const bugsContainer = createContainer("bugs");
 export const fishContainer = createContainer("fish");
 export const loading = createLoadingElement();
+export const favoriteButton = createFavoriteButton();

@@ -1,5 +1,5 @@
 // Functions which creates the sorting buttons
-export const createSortButtons = () => {
+export const createSortButtons = (): HTMLDivElement => {
   // Create Button Container
   const container = document.createElement("div");
   container.className = "sort-buttons";

@@ -4,11 +4,11 @@ import {
   fetchAllFish,
 } from "../scripts/fetchVillagers";
 import {
-  appContainer,
   searchfield,
   loading,
   currentSort,
   showingSaved,
+  mainContainer,
 } from "../data/variable";
 import {
   updateBugsDisplay,
@@ -25,7 +25,7 @@ import {
 export const setupVillagersButton = () => {
   villagersButton.addEventListener("click", async () => {
     try {
-      appContainer.appendChild(loading);
+      mainContainer.appendChild(loading);
       await fetchAllVillagers();
       loading.remove();
       updateVillagerDisplay(
@@ -44,7 +44,7 @@ export const setupVillagersButton = () => {
 export const setupBugsButton = () => {
   bugsButton.addEventListener("click", async () => {
     try {
-      appContainer.appendChild(loading);
+      mainContainer.appendChild(loading);
       await fetchAllBugs();
       loading.remove();
       updateBugsDisplay(searchfield.searchInput.value, showingSaved);
@@ -59,7 +59,7 @@ export const setupBugsButton = () => {
 export const setupFishButton = () => {
   fishButton.addEventListener("click", async () => {
     try {
-      appContainer.appendChild(loading);
+      mainContainer.appendChild(loading);
       await fetchAllFish();
       loading.remove();
       updateFishDisplay(searchfield.searchInput.value, showingSaved);

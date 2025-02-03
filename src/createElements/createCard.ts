@@ -74,6 +74,7 @@ export const createVillagerCard = (villager: NookipediaVillager) => {
     "villager",
     savedVillagers,
     (item, saveButton) => {
+      console.log("🔍 Creating card for villager:", villager.name);
       const index = savedVillagers.findIndex((v) => v.name === item.name);
       if (index !== -1) {
         savedVillagers.splice(index, 1);

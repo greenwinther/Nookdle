@@ -1,32 +1,16 @@
-import { appContainer } from "../data/variable";
-
-export const createFetchButton = (
-  appContainer: HTMLElement,
-  label: string,
-  className: string
-) => {
+export const createFetchButton = (label: string, className: string) => {
   const button = document.createElement("button");
   button.textContent = label;
   button.classList.add(className);
-  appContainer.appendChild(button);
   return button;
 };
 
 export const villagersButton = createFetchButton(
-  appContainer,
   "Load Villagers",
   "fetch-villagers-btn"
 );
-export const bugsButton = createFetchButton(
-  appContainer,
-  "Load Bugs",
-  "fetch-bugs-btn"
-);
-export const fishButton = createFetchButton(
-  appContainer,
-  "Load Fish",
-  "fetch-fish-btn"
-);
+export const bugsButton = createFetchButton("Load Bugs", "fetch-bugs-btn");
+export const fishButton = createFetchButton("Load Fish", "fetch-fish-btn");
 
 /* Old functions
 // Function to create a button for fetching villagers

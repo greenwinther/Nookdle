@@ -1,10 +1,22 @@
-import { showingSaved, searchfield, currentSort } from "../data/variable";
 import { handleSearchUpdate } from "./debouncer";
-import { updateDisplay } from "../updateDisplay";
 import { setShowingSaved } from "../data/variable";
 
+export const setupFavoriteButton = (
+  button: HTMLButtonElement,
+  searchfield: { searchInput: HTMLInputElement },
+  updateDisplay: Function,
+  currentSort: string,
+  showingSaved: boolean
+) => {
+  button.addEventListener("click", () => {
+    setShowingSaved(!showingSaved);
+    handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
+  });
+};
+
+/* 
 // Function to set up the show saved villagers button event
-export const setupShowSavedVillagersButton = () => {
+export const setupFavoriteButton = () => {
   const showSavedVillagers = document.getElementById("showSavedVillagersBtn");
 
   if (showSavedVillagers) {
@@ -13,4 +25,4 @@ export const setupShowSavedVillagersButton = () => {
       handleSearchUpdate(searchfield, updateDisplay, currentSort, showingSaved);
     });
   }
-};
+}; */

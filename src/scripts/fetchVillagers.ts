@@ -27,10 +27,13 @@ export const fetchData = async <T>(
 // Function to fetch all villagers
 export const fetchAllVillagers = async (): Promise<NookipediaVillager[]> => {
   if (allVillagers.length === 0) {
-    allVillagers = await fetchData(
+    const villagers = (await fetchData<NookipediaVillager>(
       "https://api.nookipedia.com/villagers",
       API_KEY
-    );
+    )) as NookipediaVillager[];
+
+    console.log("Fetched villagers data:", villagers);
+    allVillagers = villagers;
   }
   return allVillagers;
 };
