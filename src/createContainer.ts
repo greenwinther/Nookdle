@@ -25,6 +25,6 @@ export const createContainer = (
   type: "villagers" | "bugs" | "fish"
 ): HTMLDivElement => {
   const container = document.createElement("div");
-  container.className = `${type}-grid`; // Use the type to set a dynamic class name
+  container.className = `${type}-grid`;
   return container;
 };
