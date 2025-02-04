@@ -1,4 +1,4 @@
-export const setupFavoriteButton = (
+/* export const setupFavoriteButton = (
   button: HTMLButtonElement,
   searchfield: { searchInput: HTMLInputElement },
   updateDisplay: Function,
@@ -11,7 +11,7 @@ export const setupFavoriteButton = (
     // Pass the showingSaved state to filter the items
     updateDisplay(searchfield, currentSort, showFavorite);
   });
-};
+}; */
 
 /* Old function
 // Function to set up the show saved villagers button event

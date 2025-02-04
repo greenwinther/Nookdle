@@ -17,6 +17,7 @@ import {
   villagersContainer,
   fishContainer,
   bugsContainer,
+  favoritesContainer,
 } from "../createElements/createContainer";
 
 export const setupFetchButton = (
@@ -33,6 +34,7 @@ export const setupFetchButton = (
       villagersContainer.innerHTML = "";
       bugsContainer.innerHTML = "";
       fishContainer.innerHTML = "";
+      favoritesContainer.innerHTML = "";
 
       // Show the loading indicator
       mainContainer.appendChild(loading);

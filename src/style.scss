@@ -70,7 +70,16 @@ body {
     padding: 20px;
   }
 
-  .villagers-container, .bugs-container, .fish-container {
+  .favorites-container {
+    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;  
+    justify-content: flex-start;  
+    width: 100%; 
+  }
+
+  .villagers-container, .bugs-container, .fish-container, .favorites-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;  

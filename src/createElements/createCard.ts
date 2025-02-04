@@ -7,10 +7,6 @@ import type {
 import { allVillagers, allBugs, allFish } from "../scripts/fetchVillagers";
 import { saveCardAsFavorite } from "../events/saveCardAsFavorite";
 
-export const favorites: Array<
-  NookipediaVillager | NookipediaFish | NookipediaBugs
-> = [];
-
 export const createCard = (
   data: NookipediaData,
   type: "villager" | "fish" | "bug"
@@ -65,7 +61,7 @@ export const createCard = (
   card.append(image, name, details, saveButton);
 
   // Call function to toggle favorite status
-  saveCardAsFavorite(card, data);
+  saveCardAsFavorite(card, data, type);
 
   return card;
 };

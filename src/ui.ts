@@ -3,6 +3,7 @@ import {
   fishContainer,
   villagersContainer,
   cardContainer,
+  favoritesContainer,
 } from "./createElements/createContainer";
 import { createSearchField } from "./createElements/createSearchField";
 
@@ -10,12 +11,24 @@ export const setupCardUI = (
   cardContainer: HTMLDivElement,
   villagersContainer: HTMLDivElement,
   bugsContainer: HTMLDivElement,
-  fishContainer: HTMLDivElement
+  fishContainer: HTMLDivElement,
+  favoritesContainer: HTMLDivElement
 ) => {
-  cardContainer.append(villagersContainer, bugsContainer, fishContainer);
+  cardContainer.append(
+    favoritesContainer,
+    villagersContainer,
+    bugsContainer,
+    fishContainer
+  );
 };
 
-setupCardUI(cardContainer, villagersContainer, bugsContainer, fishContainer);
+setupCardUI(
+  cardContainer,
+  favoritesContainer,
+  villagersContainer,
+  bugsContainer,
+  fishContainer
+);
 
 // Appends the main components to the app container
 export const setupMainUI = (

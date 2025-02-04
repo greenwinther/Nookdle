@@ -12,6 +12,7 @@ import {
 } from "./createElements/createContainer";
 import { searchfield } from "./createElements/createSearchField";
 import { sortButtons } from "./createElements/createSortButtons";
+import { showFavorites } from "./events/saveCardAsFavorite";
 
 export const initApp = async () => {
   setupMainUI(
@@ -25,6 +26,7 @@ export const initApp = async () => {
   setupHeaderUI(headerContainer, favoriteButton);
 
   setupButtonEvents();
+  favoriteButton.addEventListener("click", showFavorites);
 };
 /*   setupSortButtons(
     sortButtons,
