@@ -1,6 +1,7 @@
 import type { NookipediaData } from "../types/types";
 import {
   bugsContainer,
+  cardContainer,
   favoritesContainer,
   fishContainer,
   villagersContainer,
@@ -32,11 +33,11 @@ export const saveCardAsFavorite = (
     if (index !== -1) {
       // Remove from favorites
       favorites.splice(index, 1);
-      saveButton.textContent = "♡"; // Empty heart
+      saveButton.textContent = "♡";
     } else {
       // Add to favorites with type info
       favorites.push({ data, type });
-      saveButton.textContent = "❤️"; // Filled heart
+      saveButton.textContent = "❤️";
     }
   });
 };
@@ -56,4 +57,5 @@ export const showFavorites = () => {
     // Append the card to the favorites container
     favoritesContainer.appendChild(card);
   });
+  cardContainer.appendChild(favoritesContainer);
 };

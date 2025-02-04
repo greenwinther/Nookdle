@@ -26,7 +26,8 @@ export const setupFetchButton = (
   errorMessage: string,
   villagersContainer: HTMLDivElement,
   bugsContainer: HTMLDivElement,
-  fishContainer: HTMLDivElement
+  fishContainer: HTMLDivElement,
+  favoritesContainer: HTMLDivElement
 ) => {
   button.addEventListener("click", async () => {
     try {
@@ -68,7 +69,8 @@ export const setupButtonEvents = () => {
     "Failed to load villagers",
     villagersContainer,
     bugsContainer,
-    fishContainer
+    fishContainer,
+    favoritesContainer
   );
   setupFetchButton(
     bugsButton,
@@ -76,7 +78,8 @@ export const setupButtonEvents = () => {
     "Failed to load bugs",
     villagersContainer,
     bugsContainer,
-    fishContainer
+    fishContainer,
+    favoritesContainer
   );
   setupFetchButton(
     fishButton,
@@ -84,7 +87,8 @@ export const setupButtonEvents = () => {
     "Failed to load fish",
     villagersContainer,
     bugsContainer,
-    fishContainer
+    fishContainer,
+    favoritesContainer
   );
 };
 
