@@ -3,9 +3,13 @@ import type {
   NookipediaFish,
   NookipediaVillager,
   NookipediaData,
-} from "../types/types";
-import { allVillagers, allBugs, allFish } from "../scripts/fetchVillagers";
-import { saveCardAsFavorite } from "../events/saveCardAsFavorite";
+} from "../../types/types";
+import {
+  allVillagers,
+  allBugs,
+  allFish,
+} from "../../events/fetchDataEvent/fetchData";
+import { saveCardAsFavorite } from "../../events/saveCard/saveCardAsFavorite";
 
 export const createCard = (
   data: NookipediaData,

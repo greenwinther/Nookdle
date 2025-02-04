@@ -3,7 +3,7 @@ import {
   fishContainer,
   villagersContainer,
   cardContainer,
-} from "./createElements/createContainer";
+} from "../components/containers/createContainers";
 
 export const setupCardUI = (
   cardContainer: HTMLDivElement,
@@ -34,7 +34,7 @@ export const setupMainUI = (
 
 export const setupHeaderUI = (
   headerContainer: HTMLElement,
-  favoriteButton: HTMLButtonElement
+  myFavoritebtnContainer: HTMLDivElement
 ) => {
-  headerContainer.append(favoriteButton);
+  headerContainer.append(myFavoritebtnContainer);
 };

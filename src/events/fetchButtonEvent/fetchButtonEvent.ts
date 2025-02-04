@@ -2,23 +2,23 @@ import {
   fetchAllVillagers,
   fetchAllBugs,
   fetchAllFish,
-} from "../scripts/fetchVillagers";
-import { mainContainer } from "../data/dom";
+} from "../fetchDataEvent/fetchData";
+import { mainContainer } from "../../data/dom";
 
 import {
   villagersButton,
   bugsButton,
   fishButton,
-} from "../createElements/createFetchButton";
+} from "../../components/buttons/createButtons";
 
-import { loading } from "../createElements/createLoadingElement";
-import { createCardsFromFetchedData } from "../createElements/createCard";
+import { loading } from "../../components/containers/createLoadingElement";
+import { createCardsFromFetchedData } from "../../components/cards/createCard";
 import {
   villagersContainer,
   fishContainer,
   bugsContainer,
   favoritesContainer,
-} from "../createElements/createContainer";
+} from "../../components/containers/createContainers";
 
 export const setupFetchButton = (
   button: HTMLButtonElement,

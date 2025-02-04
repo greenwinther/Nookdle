@@ -1,20 +1,21 @@
-import { setupMainUI, setupHeaderUI } from "./ui";
+import { setupMainUI, setupHeaderUI } from "./ui/ui";
 import { mainContainer, headerContainer } from "./data/dom";
 /* import { updateDisplay } from "./updateDisplay";
 import { handleSearchUpdate } from "./events/debouncer"; */
-import { setupButtonEvents } from "./events/fetchButtonEvent";
+import { setupButtonEvents } from "./events/fetchButtonEvent/fetchButtonEvent";
 /* import { setupFavoriteButton } from "./events/setupFavoriteButton";
 import { setupSortButtons } from "./events/sortButtonEvent"; */
-import { favoriteButton } from "./createElements/createShowFavoritesButton";
+import { myFavoriteButton } from "./components/buttons/createButtons";
 import {
   cardContainer,
   fetchContainer,
   searchContainer,
-} from "./createElements/createContainer";
-import { sortButtons } from "./createElements/createSortButtons";
-import { showFavorites } from "./events/saveCardAsFavorite";
-import { createSearchField } from "./createElements/createSearchField";
-import { filterCardsByName } from "./filter";
+} from "./components/containers/createContainers";
+import { sortButtons } from "./components/buttons/createSortButtons";
+import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
+import { createSearchField } from "./components/searchfield/createSearchField";
+import { filterCardsByName } from "./events/searchFilter/searchFilter";
+import { myFavoritebtnContainer } from "./components/containers/createContainers";
 
 export const initApp = async () => {
   setupMainUI(
@@ -25,10 +26,10 @@ export const initApp = async () => {
     cardContainer
   );
 
-  setupHeaderUI(headerContainer, favoriteButton);
+  setupHeaderUI(headerContainer, myFavoritebtnContainer);
 
   setupButtonEvents();
-  favoriteButton.addEventListener("click", showFavorites);
+  myFavoriteButton.addEventListener("click", showFavorites);
   const searchInput = createSearchField(searchContainer);
   filterCardsByName(searchInput, cardContainer);
 };

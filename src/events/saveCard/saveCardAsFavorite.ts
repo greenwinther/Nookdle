@@ -1,12 +1,12 @@
-import type { NookipediaData } from "../types/types";
+import type { NookipediaData } from "../../types/types";
 import {
   bugsContainer,
   cardContainer,
   favoritesContainer,
   fishContainer,
   villagersContainer,
-} from "../createElements/createContainer";
-import { createCard } from "../createElements/createCard";
+} from "../../components/containers/createContainers";
+import { createCard } from "../../components/cards/createCard";
 
 export const favorites: Array<{
   data: NookipediaData;

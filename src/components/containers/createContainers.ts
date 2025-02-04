@@ -8,6 +8,7 @@ export const createContainer = (
     | "fish"
     | "favorites"
     | "search"
+    | "myfavoritebtn"
 ): HTMLDivElement => {
   const container = document.createElement("div");
   container.className = `${type}-container`;
@@ -21,6 +22,7 @@ export const bugsContainer = createContainer("bugs");
 export const fishContainer = createContainer("fish");
 export const favoritesContainer = createContainer("favorites");
 export const searchContainer = createContainer("search");
+export const myFavoritebtnContainer = createContainer("myfavoritebtn");
 
 /* // Creates a main container with a dynamic class for different item types
 export const createContainer = (
