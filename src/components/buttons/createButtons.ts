@@ -16,10 +16,7 @@ export const villagersButton = createFetchButton(
 );
 export const bugsButton = createFetchButton("Load Bugs", "fetch-bugs-btn");
 export const fishButton = createFetchButton("Load Fish", "fetch-fish-btn");
-export const myFavoriteButton = createFetchButton(
-  "Favorites",
-  "my-favorite-btn"
-);
+export const myFavoriteButton = createFetchButton("", "my-favorite-btn");
 fetchContainer.appendChild(villagersButton);
 fetchContainer.appendChild(bugsButton);
 fetchContainer.appendChild(fishButton);
