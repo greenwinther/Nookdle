@@ -15,10 +15,46 @@
     &:hover {
       background-color: #e05c5c; 
     }
+  }
   
-    &::before {
-      content: "❤️"; 
-      font-family: Arial, sans-serif;
+  // Define a reusable button mixin
+@mixin button-styles($bg-color, $hover-color, $font-size) {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; 
+    background-color: $bg-color;
+    color: white;
+    font-size: $font-size;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+    &:hover {
+      background-color: $hover-color;
+    }
+  
+    &:focus {
+      outline: none;
     }
   }
   
+// Villager button
+.fetch-villagers-btn {
+  @include button-styles(#f06, #e05c5c, 16px); 
+}
+
+// Bug button
+.fetch-bugs-btn {
+  @include button-styles(#3a9d23, #2c7f1e, 14px); 
+}
+
+// Fish button
+.fetch-fish-btn {
+  @include button-styles(#0099cc, #0077b5, 14px);
+}
