@@ -1,3 +1,27 @@
+export const filterCardsByName = (
+  input: HTMLInputElement,
+  container: HTMLDivElement
+) => {
+  input.addEventListener("input", () => {
+    const searchText = input.value.toLowerCase();
+    const cards = container.querySelectorAll(
+      ".villager-card, .bug-card, .fish-card"
+    );
+
+    cards.forEach((card) => {
+      const nameElement = card.querySelector("h3");
+      if (nameElement) {
+        const name = nameElement.textContent?.toLowerCase() || "";
+        if (name.startsWith(searchText)) {
+          (card as HTMLElement).style.display = "block";
+        } else {
+          (card as HTMLElement).style.display = "none";
+        }
+      }
+    });
+  });
+};
+
 /* import type {
   NookipediaVillager,
   NookipediaBugs,

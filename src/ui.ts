@@ -4,7 +4,6 @@ import {
   villagersContainer,
   cardContainer,
 } from "./createElements/createContainer";
-import { createSearchField } from "./createElements/createSearchField";
 
 export const setupCardUI = (
   cardContainer: HTMLDivElement,
@@ -20,13 +19,13 @@ setupCardUI(cardContainer, villagersContainer, bugsContainer, fishContainer);
 // Appends the main components to the app container
 export const setupMainUI = (
   mainContainer: HTMLElement,
-  searchfield: ReturnType<typeof createSearchField>,
+  searchContainer: HTMLDivElement,
   sortButtons: HTMLDivElement,
   fetchContainer: HTMLDivElement,
   cardContainer: HTMLDivElement
 ) => {
   mainContainer.append(
-    searchfield.container,
+    searchContainer,
     sortButtons,
     fetchContainer,
     cardContainer

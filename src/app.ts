@@ -9,15 +9,17 @@ import { favoriteButton } from "./createElements/createShowFavoritesButton";
 import {
   cardContainer,
   fetchContainer,
+  searchContainer,
 } from "./createElements/createContainer";
-import { searchfield } from "./createElements/createSearchField";
 import { sortButtons } from "./createElements/createSortButtons";
 import { showFavorites } from "./events/saveCardAsFavorite";
+import { createSearchField } from "./createElements/createSearchField";
+import { filterCardsByName } from "./filter";
 
 export const initApp = async () => {
   setupMainUI(
     mainContainer,
-    searchfield,
+    searchContainer,
     sortButtons,
     fetchContainer,
     cardContainer
@@ -27,6 +29,8 @@ export const initApp = async () => {
 
   setupButtonEvents();
   favoriteButton.addEventListener("click", showFavorites);
+  const searchInput = createSearchField(searchContainer);
+  filterCardsByName(searchInput, cardContainer);
 };
 /*   setupSortButtons(
     sortButtons,
