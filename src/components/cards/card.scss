@@ -1,0 +1,82 @@
+@mixin card-styles($bg-color, $width, $height, $border-radius, $box-shadow) {
+    background-color: $bg-color;
+    width: $width;
+    height: $height;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+  
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      text-align: center;
+      margin: 16px;
+    }
+  
+    .details {
+      font-size: 1rem;
+      color: #555;
+      text-align: center;
+
+      p {
+        margin: 8px;
+        text-align: center;
+      }
+
+    }
+  
+    .save-button {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ff6f61;  
+      transition: color 0.3s ease;
+      padding: 5px;
+  
+      &:hover {
+        color: #e0554d;  
+      }
+  
+      &.filled {
+        color: #e0554d; 
+        }
+    }
+}
+  
+.villager-card {
+    @include card-styles(#fff, 200px, 350px, 8px, 0 4px 8px rgba(0, 0, 0, 0.1));  // Red for villager card
+}
+  
+.bug-card {
+    @include card-styles(#fff, 200px, 350px, 8px, 0 4px 8px rgba(0, 0, 0, 0.1));  // Green for bug card
+}
+  
+.fish-card {
+    @include card-styles(#fff, 200px, 350px, 8px, 0 4px 8px rgba(0, 0, 0, 0.1));  // Blue for fish card
+}

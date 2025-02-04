@@ -1,6 +1,8 @@
 @use "components/buttons/buttons.scss";
 @use "components/searchfield/searchFieldContainer.scss";
 @use "components/searchfield/searchfield.scss";
+@use "components/cards/card.scss";
+@use "components/cards/cardsContainer.scss";
 
 
 body {
@@ -20,207 +22,21 @@ body {
 
 .main-container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  .sort-button-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-
-    .sort-button {
-      padding: 8px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #f0f0f0;
-      }
-    }
-  }
+  .card-container {
+  display: flex;
+  flex-direction: column;
+}
 
   .fetch-container {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-
-    .fetch-type-btn {
-      padding: 8px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #f0f0f0;
-      }
-    }
   } 
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
-    padding: 20px;
-  }
-
-  .favorites-container {
-    display: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;  
-    justify-content: flex-start;  
-    width: 100%; 
-  }
-
-
-  
-  .villager-card, .bug-card, .fish-card {
-    background-color: #fff;
-    width: 200px;  
-    height: 350px; 
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;  
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;  
-  }
-  
-    img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-  
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: #333;
-      text-align: center;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  
-    .details {
-      font-size: 0.9rem;
-      color: #555;
-      text-align: center;
-      margin-bottom: 10px;
-      flex-grow: 1;
-    }
-  
-    .save-button {
-      position: absolute;  // Position the button in the top-right corner
-      top: 10px;
-      right: 10px;
-      background-color: transparent;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #ff6f61;  // Color for the empty heart
-      transition: color 0.3s ease;
-      padding: 5px;
-  
-      &:hover {
-        color: #e0554d;  // Darker red when hovered
-      }
-  
-      &.filled {
-        color: #e0554d;  // Color for the filled heart
-      }
-    }
-  }
-
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  padding: 20px; // Optional, add some padding around the container to avoid touching the edges
-}
-
-.villager-card, .bug-card, .fish-card {
-  background-color: #fff;
-  width: 200px;  // This is fixed, can be changed to a percentage if you want responsive sizing
-  height: 350px; // Keep a fixed height
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;  // Important for absolute positioning of the button
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;  // Prevent shrinking of the card
-  
-  // Optional: Responsive styling for smaller screens
-  @media (max-width: 768px) {
-    width: 100%; // On small screens, cards will take the full width
-    height: auto; // Allow height to adjust automatically based on content
-  }
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .details {
-    font-size: 0.9rem;
-    color: #555;
-    text-align: center;
-    margin-bottom: 10px;
-    flex-grow: 1;
-  }
-
-  .save-button {
-    position: absolute;  // Position the button in the top-right corner
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #ff6f61;  // Color for the empty heart
-    transition: color 0.3s ease;
-    padding: 5px;
-
-    &:hover {
-      color: #e0554d;  // Darker red when hovered
-    }
-
-    &.filled {
-      color: #e0554d;  // Color for the filled heart
-    }
-  }
 }
 
 .footer-container {
