@@ -11,20 +11,13 @@ import {
   fetchContainer,
   searchContainer,
 } from "./components/containers/createContainers";
-import { sortButtons } from "./components/buttons/createSortButtons";
 import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
 import { createSearchField } from "./components/searchfield/createSearchField";
 import { filterCardsByName } from "./events/searchFilter/searchFilter";
 import { myFavoritebtnContainer } from "./components/containers/createContainers";
 
 export const initApp = async () => {
-  setupMainUI(
-    mainContainer,
-    searchContainer,
-    sortButtons,
-    fetchContainer,
-    cardContainer
-  );
+  setupMainUI(mainContainer, searchContainer, fetchContainer, cardContainer);
 
   setupHeaderUI(headerContainer, myFavoritebtnContainer);
 
