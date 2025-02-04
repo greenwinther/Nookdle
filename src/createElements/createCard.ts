@@ -14,6 +14,8 @@ export const createCard = (
   // Create Card container
   const card = document.createElement("div");
   card.className = `${type}-card`;
+  // Store name as an attribute
+  card.setAttribute("data-name", data.name.toLowerCase());
 
   // Create Image
   const image = document.createElement("img");
