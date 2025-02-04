@@ -3,7 +3,7 @@ export const createSearchField = (container: HTMLDivElement) => {
   // Create Search field
   const searchInput = document.createElement("input");
   searchInput.type = "text";
-  searchInput.placeholder = "Search villagers...";
+  searchInput.placeholder = "Search...";
   searchInput.className = "search-input";
 
   // Append the search input to the provided container

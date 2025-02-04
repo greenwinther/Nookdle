@@ -1,5 +1,7 @@
 @use "components/buttons/buttons.scss";
+@use "components/searchfield/searchFieldContainer.scss";
 @use "components/searchfield/searchfield.scss";
+
 
 body {
   font-family: Arial, sans-serif;
@@ -18,10 +20,6 @@ body {
 
 .main-container {
   padding: 20px;
-
-  .search-container {
-    margin-bottom: 20px;
-  }
 
   .sort-button-container {
     display: flex;
