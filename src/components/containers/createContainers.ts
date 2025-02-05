@@ -15,6 +15,7 @@ export const searchContainer = createContainer("search");
 export const myFavoritebtnContainer = createContainer("myfavoritebtn");
 export const searchMenuContainer = createContainer("searchmenu");
 export const checkboxContainer = createContainer("checkbox");
+export const filterContainer = createContainer("filter");
 
 /* // Creates a main container with a dynamic class for different item types
 export const createContainer = (

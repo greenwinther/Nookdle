@@ -19,8 +19,10 @@ import {
   bugsContainer,
   favoritesContainer,
   checkboxContainer,
+  filterContainer,
 } from "../../components/containers/createContainers";
 import { initializeFilters } from "../../components/checkboxes/checkboxes";
+import { filterButton } from "../../components/buttons/createButtons";
 
 export const setupFetchButton = (
   button: HTMLButtonElement,
@@ -48,7 +50,8 @@ export const setupFetchButton = (
 
       // Remove the loading indicator
       loading.remove();
-
+      filterContainer.appendChild(filterButton);
+      mainContainer.appendChild(filterContainer);
       // Check which button was clicked, and append the corresponding data to the relevant container
       if (button === villagersButton) {
         createCardsFromFetchedData(villagersContainer, "villager");

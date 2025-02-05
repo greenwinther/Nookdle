@@ -22,6 +22,7 @@ export const submitSearchButton = createFetchButton(
   "Search",
   "submit-search-button"
 );
+export const filterButton = createFetchButton("Filter", "filter-btn");
 fetchContainer.appendChild(villagersButton);
 fetchContainer.appendChild(bugsButton);
 fetchContainer.appendChild(fishButton);

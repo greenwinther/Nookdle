@@ -19,17 +19,10 @@ setupCardUI(cardContainer, villagersContainer, bugsContainer, fishContainer);
 // Appends the main components to the app container
 export const setupMainUI = (
   mainContainer: HTMLElement,
-  searchContainer: HTMLDivElement,
   fetchContainer: HTMLDivElement,
-  checkboxContainer: HTMLDivElement,
   cardContainer: HTMLDivElement
 ) => {
-  mainContainer.append(
-    searchContainer,
-    fetchContainer,
-    checkboxContainer,
-    cardContainer
-  );
+  mainContainer.append(fetchContainer, cardContainer);
 };
 
 export const setupHeaderUI = (
