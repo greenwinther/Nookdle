@@ -23,19 +23,23 @@ const createCheckboxGroup = (
   container: HTMLDivElement
 ) => {
   const group = document.createElement("div");
-  group.className = `checkbox-${type}`;
+  group.className = `filter-group filter-${type.toLowerCase()}`;
   group.innerHTML = `<h4>${type}</h4>`;
 
   values.forEach((value) => {
-    const label = document.createElement("label");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = value;
-    checkbox.classList.add(`filter-${type.toLowerCase()}`);
+    const button = document.createElement("button");
+    button.textContent = value;
+    button.classList.add("filter-button");
+    button.dataset.value = value;
 
-    label.appendChild(checkbox);
-    label.append(value);
-    group.appendChild(label);
+    // Toggle active class on click
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+      // Re-filter villagers based on selection
+      filterVillagers();
+    });
+
+    group.appendChild(button);
   });
 
   container.appendChild(group);
@@ -57,16 +61,16 @@ export const initializeFilters = (checkboxContainer: HTMLDivElement) => {
 export const filterVillagers = () => {
   // Get the list of selected target checkboxes that are checked and map their values into an array
   const selectedSpecies = Array.from(
-    document.querySelectorAll<HTMLInputElement>(".filter-species:checked")
-  ).map((cb) => cb.value);
+    document.querySelectorAll<HTMLButtonElement>(".filter-species .active")
+  ).map((btn) => btn.dataset.value!);
 
   const selectedPersonalities = Array.from(
-    document.querySelectorAll<HTMLInputElement>(".filter-personality:checked")
-  ).map((cb) => cb.value);
+    document.querySelectorAll<HTMLButtonElement>(".filter-personality .active")
+  ).map((btn) => btn.dataset.value!);
 
   const selectedGenders = Array.from(
-    document.querySelectorAll<HTMLInputElement>(".filter-gender:checked")
-  ).map((cb) => cb.value);
+    document.querySelectorAll<HTMLButtonElement>(".filter-gender .active")
+  ).map((btn) => btn.dataset.value!);
 
   // Loop through all villager cards and filter them based on the selected criteria
   document

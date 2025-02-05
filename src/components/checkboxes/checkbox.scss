@@ -1,12 +1,31 @@
-.checkbox-group {
-    margin-bottom: 15px;
+.filter-group {
+  margin-bottom: 10px;
+
+  h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
   }
-  
-  .checkbox-group label {
-    display: block;
+}
+
+.filter-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: #ddd;
   }
-  
-  .checkbox-group input[type="checkbox"] {
-    margin-right: 10px;
+
+  &.active {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
   }
+}
+
   
