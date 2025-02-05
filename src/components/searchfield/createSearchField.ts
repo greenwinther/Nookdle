@@ -26,9 +26,3 @@ export const searchInput = createSearchField(
   "filter...",
   "search-input"
 );
-
-export const searchMenu = createSearchField(
-  searchMenuContainer,
-  "search...",
-  "search-menu"
-);

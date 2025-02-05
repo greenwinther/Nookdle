@@ -16,7 +16,6 @@ import { filterCardsByName } from "./events/searchFilter/searchFilter";
 import { myFavoritebtnContainer } from "./components/containers/createContainers";
 import { searchInput } from "./components/searchfield/createSearchField";
 import { submitSearchButton } from "./components/buttons/createButtons";
-import { searchMenu } from "./components/searchfield/createSearchField";
 import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
 import { filterVillagers } from "./components/checkboxes/checkboxes";
 import { toggleFilters } from "./events/searchFilter/filterButton";
@@ -28,7 +27,7 @@ import {
 } from "./components/containers/createContainers";
 
 export const initApp = async () => {
-  setupMainUI(mainContainer, fetchContainer, cardContainer);
+  setupMainUI(mainContainer, fetchContainer, searchContainer, cardContainer);
 
   setupHeaderUI(headerContainer, myFavoritebtnContainer, searchMenuContainer);
 
@@ -36,19 +35,14 @@ export const initApp = async () => {
   myFavoriteButton.addEventListener("click", showFavorites);
 
   submitSearchButton.addEventListener("click", () => {
-    const villagerName = (searchMenu as HTMLInputElement).value.trim();
+    const villagerName = (searchInput as HTMLInputElement).value.trim();
     fetchVillagerByName(villagerName);
   });
 
   filterCardsByName(searchInput, cardContainer);
 
   // Initialize filter button toggle functionality
-  toggleFilters(
-    filterButton,
-    filterContainer,
-    searchContainer,
-    checkboxContainer
-  );
+  toggleFilters(filterButton, filterContainer, checkboxContainer);
   // Attach event listeners to checkboxes
   document.addEventListener("change", () => filterVillagers());
 };

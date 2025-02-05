@@ -23,19 +23,24 @@ body {
 
 .main-container {
   display: grid;
-  grid-template-columns: 1fr; // Single column grid
-  grid-template-rows: auto auto auto; // Three rows, one for each section
-  gap: 20px; // Optional, to add space between sections
+  grid-template-columns: 1fr; 
+  grid-template-rows: auto auto auto auto; 
+  gap: 20px; 
 
-  // Define grid areas for each section
+
   grid-template-areas: 
     "fetch-container"
+    "search-input"
     "filter-container"
     "card-container";
 
-  // Optionally, you can also define specific styling for each section:
+  
   .fetch-container {
     grid-area: fetch-container;
+  }
+
+  .search-input {
+    grid-area: search-container;
   }
 
   .filter-container {

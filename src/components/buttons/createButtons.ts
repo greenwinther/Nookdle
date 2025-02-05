@@ -1,7 +1,7 @@
 import {
   myFavoritebtnContainer,
   fetchContainer,
-  searchMenuContainer,
+  searchContainer,
 } from "../containers/createContainers";
 
 export const createFetchButton = (label: string, className: string) => {
@@ -27,7 +27,7 @@ fetchContainer.appendChild(villagersButton);
 fetchContainer.appendChild(bugsButton);
 fetchContainer.appendChild(fishButton);
 myFavoritebtnContainer.appendChild(myFavoriteButton);
-searchMenuContainer.appendChild(submitSearchButton);
+searchContainer.appendChild(submitSearchButton);
 
 /* Old functions
 // Function to create a button for fetching villagers

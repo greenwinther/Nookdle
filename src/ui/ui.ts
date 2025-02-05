@@ -20,9 +20,10 @@ setupCardUI(cardContainer, villagersContainer, bugsContainer, fishContainer);
 export const setupMainUI = (
   mainContainer: HTMLElement,
   fetchContainer: HTMLDivElement,
+  searchContainer: HTMLDivElement,
   cardContainer: HTMLDivElement
 ) => {
-  mainContainer.append(fetchContainer, cardContainer);
+  mainContainer.append(fetchContainer, searchContainer, cardContainer);
 };
 
 export const setupHeaderUI = (
