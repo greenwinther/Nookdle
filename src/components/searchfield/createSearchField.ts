@@ -1,7 +1,4 @@
-import {
-  searchContainer,
-  searchMenuContainer,
-} from "../containers/createContainers";
+import { searchContainer } from "../containers/createContainers";
 
 // Function which creates a searchfield and attaches it to a container
 export const createSearchField = (
