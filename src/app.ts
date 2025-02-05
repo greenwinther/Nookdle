@@ -8,23 +8,42 @@ import { setupSortButtons } from "./events/sortButtonEvent"; */
 import { myFavoriteButton } from "./components/buttons/createButtons";
 import {
   cardContainer,
+  checkboxContainer,
   fetchContainer,
   searchContainer,
+  searchMenuContainer,
 } from "./components/containers/createContainers";
 import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
-import { createSearchField } from "./components/searchfield/createSearchField";
 import { filterCardsByName } from "./events/searchFilter/searchFilter";
 import { myFavoritebtnContainer } from "./components/containers/createContainers";
+import { searchInput } from "./components/searchfield/createSearchField";
+import { submitSearchButton } from "./components/buttons/createButtons";
+import { searchMenu } from "./components/searchfield/createSearchField";
+import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
+import { filterVillagers } from "./components/checkboxes/checkboxes";
 
 export const initApp = async () => {
-  setupMainUI(mainContainer, searchContainer, fetchContainer, cardContainer);
+  setupMainUI(
+    mainContainer,
+    fetchContainer,
+    searchContainer,
+    checkboxContainer,
+    cardContainer
+  );
 
-  setupHeaderUI(headerContainer, myFavoritebtnContainer);
+  setupHeaderUI(headerContainer, myFavoritebtnContainer, searchMenuContainer);
 
   setupButtonEvents();
   myFavoriteButton.addEventListener("click", showFavorites);
-  const searchInput = createSearchField(searchContainer);
+
+  submitSearchButton.addEventListener("click", () => {
+    const villagerName = (searchMenu as HTMLInputElement).value.trim();
+    fetchVillagerByName(villagerName);
+  });
+
   filterCardsByName(searchInput, cardContainer);
+  // Attach event listeners to checkboxes
+  document.addEventListener("change", () => filterVillagers());
 };
 /*   setupSortButtons(
     sortButtons,

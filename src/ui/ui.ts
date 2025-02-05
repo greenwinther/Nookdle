@@ -21,14 +21,21 @@ export const setupMainUI = (
   mainContainer: HTMLElement,
   searchContainer: HTMLDivElement,
   fetchContainer: HTMLDivElement,
+  checkboxContainer: HTMLDivElement,
   cardContainer: HTMLDivElement
 ) => {
-  mainContainer.append(searchContainer, fetchContainer, cardContainer);
+  mainContainer.append(
+    searchContainer,
+    fetchContainer,
+    checkboxContainer,
+    cardContainer
+  );
 };
 
 export const setupHeaderUI = (
   headerContainer: HTMLElement,
-  myFavoritebtnContainer: HTMLDivElement
+  myFavoritebtnContainer: HTMLDivElement,
+  searchMenuContainer: HTMLDivElement
 ) => {
-  headerContainer.append(myFavoritebtnContainer);
+  headerContainer.append(myFavoritebtnContainer, searchMenuContainer);
 };

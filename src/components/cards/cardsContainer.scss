@@ -1,27 +1,25 @@
-// General Container Styles for All Categories
-@mixin container-styles($flex-direction, $justify-content, $align-items) {
+@mixin container-styles() {
     display: flex;
     flex-wrap: wrap; 
-    justify-content: $justify-content; 
-    align-items: $align-items; 
+    justify-content: center; 
+    align-items: center; 
 }
 
-// Villagers Container
 .villagers-container {
-    @include container-styles(column, center, center); 
+    @include container-styles(); 
 }
 
 // Bugs Container
 .bugs-container {
-    @include container-styles(column, center, center); 
+    @include container-styles(); 
 }
 
 // Fish Container
 .fish-container {
-    @include container-styles(column, center, center);  
+    @include container-styles();  
 }
 
 // Favorites Container
 .favorites-container {
-    @include container-styles(column, center, center);
+    @include container-styles();
 }

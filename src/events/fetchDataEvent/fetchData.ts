@@ -4,6 +4,8 @@ import type {
   NookipediaBugs,
   NookipediaFish,
 } from "../../types/types";
+import { villagersContainer } from "../../components/containers/createContainers";
+import { createCard } from "../../components/cards/createCard";
 
 export let allVillagers: NookipediaVillager[] = [];
 export let allFish: NookipediaFish[] = [];
@@ -51,6 +53,35 @@ export const fetchAllBugs = async (): Promise<NookipediaBugs[]> => {
     allBugs = await fetchData("https://api.nookipedia.com/nh/bugs", API_KEY);
   }
   return allBugs;
+};
+
+export const fetchVillagerByName = async (villagerName: string) => {
+  if (!villagerName.trim()) return;
+
+  try {
+    const url = `https://api.nookipedia.com/villagers?name=${encodeURIComponent(
+      villagerName
+    )}`;
+
+    const data = await fetchData<NookipediaVillager>(url, API_KEY);
+
+    if (data.length === 0) {
+      alert("Villager not found! Try another name.");
+      return;
+    }
+
+    // Clear previous search results
+    villagersContainer.innerHTML = "";
+
+    // Create and append the villager card(s) using `createCard`
+    data.forEach((villager) => {
+      const villagerCard = createCard(villager, "villager");
+      villagersContainer.appendChild(villagerCard);
+    });
+  } catch (error) {
+    console.error("Error fetching villager:", error);
+    alert("Something went wrong. Please try again.");
+  }
 };
 
 /* old functions

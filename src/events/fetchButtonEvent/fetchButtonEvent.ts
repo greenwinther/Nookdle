@@ -18,7 +18,9 @@ import {
   fishContainer,
   bugsContainer,
   favoritesContainer,
+  checkboxContainer,
 } from "../../components/containers/createContainers";
+import { initializeFilters } from "../../components/checkboxes/checkboxes";
 
 export const setupFetchButton = (
   button: HTMLButtonElement,
@@ -27,7 +29,8 @@ export const setupFetchButton = (
   villagersContainer: HTMLDivElement,
   bugsContainer: HTMLDivElement,
   fishContainer: HTMLDivElement,
-  favoritesContainer: HTMLDivElement
+  favoritesContainer: HTMLDivElement,
+  checkboxContainer: HTMLDivElement
 ) => {
   button.addEventListener("click", async () => {
     try {
@@ -49,6 +52,7 @@ export const setupFetchButton = (
       // Check which button was clicked, and append the corresponding data to the relevant container
       if (button === villagersButton) {
         createCardsFromFetchedData(villagersContainer, "villager");
+        initializeFilters(checkboxContainer);
       } else if (button === bugsButton) {
         createCardsFromFetchedData(bugsContainer, "bug");
       } else if (button === fishButton) {
@@ -70,7 +74,8 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer
+    favoritesContainer,
+    checkboxContainer
   );
   setupFetchButton(
     bugsButton,
@@ -79,7 +84,8 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer
+    favoritesContainer,
+    checkboxContainer
   );
   setupFetchButton(
     fishButton,
@@ -88,7 +94,8 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer
+    favoritesContainer,
+    checkboxContainer
   );
 };
 
