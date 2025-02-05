@@ -22,11 +22,30 @@ body {
 }
 
 .main-container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr; // Single column grid
+  grid-template-rows: auto auto auto; // Three rows, one for each section
+  gap: 20px; // Optional, to add space between sections
+
+  // Define grid areas for each section
+  grid-template-areas: 
+    "fetch-container"
+    "filter-container"
+    "card-container";
+
+  // Optionally, you can also define specific styling for each section:
+  .fetch-container {
+    grid-area: fetch-container;
+  }
+
+  .filter-container {
+    grid-area: filter-container;
+  }
+
+  .card-container {
+    grid-area: card-container;
+  }
+}
 
   .card-container {
   display: flex;
@@ -38,7 +57,7 @@ body {
     gap: 10px;
     margin-bottom: 20px;
   } 
-}
+
 
 .footer-container {
   padding: 10px;

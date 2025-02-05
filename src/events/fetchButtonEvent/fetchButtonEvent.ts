@@ -24,6 +24,8 @@ import {
 import { initializeFilters } from "../../components/checkboxes/checkboxes";
 import { filterButton } from "../../components/buttons/createButtons";
 
+let filtersInitialized = false;
+
 export const setupFetchButton = (
   button: HTMLButtonElement,
   fetchFunction: () => Promise<any>,
@@ -50,12 +52,18 @@ export const setupFetchButton = (
 
       // Remove the loading indicator
       loading.remove();
+
+      // Append the filterContainer only once
       filterContainer.appendChild(filterButton);
       mainContainer.appendChild(filterContainer);
       // Check which button was clicked, and append the corresponding data to the relevant container
       if (button === villagersButton) {
         createCardsFromFetchedData(villagersContainer, "villager");
-        initializeFilters(checkboxContainer);
+        // Initialize filters only once
+        if (!filtersInitialized) {
+          initializeFilters(checkboxContainer);
+          filtersInitialized = true;
+        }
       } else if (button === bugsButton) {
         createCardsFromFetchedData(bugsContainer, "bug");
       } else if (button === fishButton) {
