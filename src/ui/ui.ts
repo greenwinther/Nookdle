@@ -28,8 +28,7 @@ export const setupMainUI = (
 
 export const setupHeaderUI = (
   headerContainer: HTMLElement,
-  myFavoritebtnContainer: HTMLDivElement,
-  searchMenuContainer: HTMLDivElement
+  myFavoritebtnContainer: HTMLDivElement
 ) => {
-  headerContainer.append(myFavoritebtnContainer, searchMenuContainer);
+  headerContainer.append(myFavoritebtnContainer);
 };

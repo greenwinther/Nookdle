@@ -23,7 +23,7 @@ const createCheckboxGroup = (
   container: HTMLDivElement
 ) => {
   const group = document.createElement("div");
-  group.className = `filter-group filter-${type.toLowerCase()}`;
+  group.classList.add(`filter-${type.toLowerCase()}`);
   group.innerHTML = `<h4>${type}</h4>`;
 
   values.forEach((value) => {
@@ -62,15 +62,15 @@ export const filterVillagers = () => {
   // Get the list of selected target checkboxes that are checked and map their values into an array
   const selectedSpecies = Array.from(
     document.querySelectorAll<HTMLButtonElement>(".filter-species .active")
-  ).map((btn) => btn.dataset.value!);
+  ).map((btn) => btn.dataset.value);
 
   const selectedPersonalities = Array.from(
     document.querySelectorAll<HTMLButtonElement>(".filter-personality .active")
-  ).map((btn) => btn.dataset.value!);
+  ).map((btn) => btn.dataset.value);
 
   const selectedGenders = Array.from(
     document.querySelectorAll<HTMLButtonElement>(".filter-gender .active")
-  ).map((btn) => btn.dataset.value!);
+  ).map((btn) => btn.dataset.value);
 
   // Loop through all villager cards and filter them based on the selected criteria
   document

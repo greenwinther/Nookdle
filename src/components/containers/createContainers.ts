@@ -13,7 +13,6 @@ export const fishContainer = createContainer("fish");
 export const favoritesContainer = createContainer("favorites");
 export const searchContainer = createContainer("search");
 export const myFavoritebtnContainer = createContainer("myfavoritebtn");
-export const searchMenuContainer = createContainer("searchmenu");
 export const checkboxContainer = createContainer("checkbox");
 export const filterContainer = createContainer("filter");
 

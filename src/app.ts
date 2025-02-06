@@ -9,23 +9,22 @@ import {
 import {
   cardContainer,
   fetchContainer,
-  searchMenuContainer,
   myFavoritebtnContainer,
   filterContainer,
   searchContainer,
   checkboxContainer,
 } from "./components/containers/createContainers";
 import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
-import { filterCardsByName } from "./events/searchFilter/searchFilter";
+import { filterCardsByName } from "./events/filter/searchFilter";
 import { searchInput } from "./components/searchfield/createSearchField";
 import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
+import { toggleFilters } from "./events/filter/toggleFilterButton";
 import { filterVillagers } from "./components/checkboxes/checkboxes";
-import { toggleFilters } from "./events/searchFilter/filterButton";
 
 export const initApp = async () => {
   setupMainUI(mainContainer, fetchContainer, searchContainer, cardContainer);
 
-  setupHeaderUI(headerContainer, myFavoritebtnContainer, searchMenuContainer);
+  setupHeaderUI(headerContainer, myFavoritebtnContainer);
 
   setupButtonEvents();
   myFavoriteButton.addEventListener("click", showFavorites);
