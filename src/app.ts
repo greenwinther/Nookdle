@@ -1,30 +1,26 @@
 import { setupMainUI, setupHeaderUI } from "./ui/ui";
 import { mainContainer, headerContainer } from "./data/dom";
-/* import { updateDisplay } from "./updateDisplay";
-import { handleSearchUpdate } from "./events/debouncer"; */
 import { setupButtonEvents } from "./events/fetchButtonEvent/fetchButtonEvent";
-/* import { setupFavoriteButton } from "./events/setupFavoriteButton";
-import { setupSortButtons } from "./events/sortButtonEvent"; */
-import { myFavoriteButton } from "./components/buttons/createButtons";
+import {
+  myFavoriteButton,
+  submitSearchButton,
+  filterButton,
+} from "./components/buttons/createButtons";
 import {
   cardContainer,
   fetchContainer,
   searchMenuContainer,
-} from "./components/containers/createContainers";
-import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
-import { filterCardsByName } from "./events/searchFilter/searchFilter";
-import { myFavoritebtnContainer } from "./components/containers/createContainers";
-import { searchInput } from "./components/searchfield/createSearchField";
-import { submitSearchButton } from "./components/buttons/createButtons";
-import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
-import { filterVillagers } from "./components/checkboxes/checkboxes";
-import { toggleFilters } from "./events/searchFilter/filterButton";
-import { filterButton } from "./components/buttons/createButtons";
-import {
+  myFavoritebtnContainer,
   filterContainer,
   searchContainer,
   checkboxContainer,
 } from "./components/containers/createContainers";
+import { showFavorites } from "./events/saveCard/saveCardAsFavorite";
+import { filterCardsByName } from "./events/searchFilter/searchFilter";
+import { searchInput } from "./components/searchfield/createSearchField";
+import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
+import { filterVillagers } from "./components/checkboxes/checkboxes";
+import { toggleFilters } from "./events/searchFilter/filterButton";
 
 export const initApp = async () => {
   setupMainUI(mainContainer, fetchContainer, searchContainer, cardContainer);
