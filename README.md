@@ -26,16 +26,50 @@ This is a simple Wikipedia-style page for Animal Crossing that fetches data from
 ## 🗂 Folder Structure
 ```
 📁 your-repo/
-├── 📁 src/                # Source code
-│   ├── 📁 components/     # UI components
-│   ├── 📁 styles/         # SCSS styles
-│   ├── 📁 types/          # TypeScript types
-│   ├── 📄 main.ts         # Main entry point
-│   └── 📄 api.ts          # Functions for fetching data
-├── 📁 public/             # Static assets
-├── 📄 index.html          # Main HTML file
-├── 📄 README.md           # This file!
-└── 📄 tsconfig.json       # TypeScript config
+├── 📁 src/                                  # Source code
+│   ├── 📁 components                        # UI components
+        ├── 📁 buttons                       # Creating & styling buttons
+            ├── 📄 buttons.scss
+            ├── 📄 createButtons.ts
+        ├── 📁 cards                         # Creating & styling cards
+            ├── 📄 card.scss
+            ├── 📄 createCards.ts
+        ├── 📁 checkboxes                    # Creating, styling & scripting checkboxes
+            ├── 📄 checkboxes.scss
+            ├── 📄 checkboxes.ts
+        ├── 📁 containers                    # Creating containers
+            ├── 📄 createContainers.ts
+            ├── 📄 createLoadingElement.ts
+        ├── 📁 searchfield                   # Creating & styling inputfield
+            ├── 📄 createSearchField.ts
+            ├── 📄 searchField.scss
+│   ├── 📁 data                              # Getting dom elements
+        ├── 📄 dom.ts
+│   ├── 📁 event                             # Event handling
+        ├── 📁 fetchButtonEvent              # Button event for fetching data
+            ├── 📄 fetchButtonEvent.ts
+        ├── 📁 fetchDataEvent                # Functions for fetching data
+            ├── 📄 fetchData.ts
+        ├── 📁 filter                        # Search Filter
+            ├── 📄 searchFilter.scss
+            ├── 📄 toggleFilterButton.scss
+        ├── 📁 saveCard                     # Function for saving cards
+            ├── 📄 saveCardAsFavorite.ts
+│   ├── 📁 types                            # TypeScript types
+        ├── 📄 types.ts
+│   ├── 📁 ui                               # Ui appending
+        ├── 📄 ui.ts
+│   ├── 📄 app.ts                           # Initializer 
+│   ├── 📄 index.scss
+│   ├── 📄 layout.scss                      # Layout for scss
+│   ├── 📄 main.ts
+│   ├── 📄 mixin.scss                       # Mixins
+│   ├── 📄 style.scss                       # SCSS styles
+│   ├── 📄 main.ts                          # Main entry point
+├── 📁 public/                              # Static assets
+├── 📄 index.html                           # Main HTML file
+├── 📄 README.md                            # This file!
+└── 📄 tsconfig.json                        # TypeScript config
 ```
 
 ## 🌐 API Info
