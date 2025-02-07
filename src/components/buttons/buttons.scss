@@ -1,65 +1,91 @@
+$leaf-green: #4CAF50;
+$sky-blue: #87CEEB;
+$sunflower-yellow: #FFD700;
+$soft-peach: #FFDAB9;
+$earth-brown: #8B4513;
+$button-text-color: #ffffff;  
+$search-border-color: #4CAF50; 
+$submit-border-color: #FFD700;
+$button-height: 40px;
+$button-weight: 110px;
+
+
 .my-favorite-btn {
-    width: 50px; 
-    height: 50px;
-    border-radius: 50%; 
-    background-color: rgb(0, 143, 153); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #e05c5c; 
-    }
+  background-color: $sky-blue;
+  border-radius: 50%; 
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+
+  &:hover {
+    background-color: darken($sky-blue, 10%)
   }
+}
   
-  // Define a reusable button mixin
-@mixin button-styles($bg-color, $hover-color, $font-size) {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px; 
-    background-color: $bg-color;
-    color: white;
-    font-size: $font-size;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100px; 
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  
-    &:hover {
-      background-color: $hover-color;
-    }
-  
-    &:focus {
-      outline: none;
-    }
-  }
-  
-// Villager button
+.fetch-fish-btn,
+.fetch-bugs-btn,
 .fetch-villagers-btn {
-  @include button-styles(#f06, #e05c5c, 16px); 
+  background-color: $leaf-green;
+  color: $button-text-color;
+  height: $button-height;
+  width: $button-weight;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($leaf-green, 10%);
+  }
+
+  i {
+    margin-right: 8px;
+  }
 }
 
-// Bug button
-.fetch-bugs-btn {
-  @include button-styles(#3a9d23, #2c7f1e, 14px); 
+.search-input {
+  background-color: transparent;
+  border-radius: 8px;
+  border: 3px solid $search-border-color;
+  margin-right: 10px;
+  width: 250px;
+  height: $button-height;
+  font-size: 16px;
+  outline: none;
+
+  &:focus {
+    border-color: darken($search-border-color, 10%);
+  }
 }
 
-// Fish button
-.fetch-fish-btn {
-  @include button-styles(#0099cc, #0077b5, 14px);
+.submit-search-button {
+  background-color: $sunflower-yellow;
+  height: $button-height;
+  width: 80px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: darken($sunflower-yellow, 10%);
+  }
 }
 
-.filter-button {
-  height: 30px;
-  width: 90px;
+.filter-btn {
+  background-color: $soft-peach;
+  height: 20px;
+  width: $button-weight;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover {
+    background-color: darken($soft-peach, 10%);
+  }
 }

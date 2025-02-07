@@ -42,8 +42,6 @@ export const saveCardAsFavorite = (
   });
 };
 
-/* export let showingFavorites: boolean = false; */
-
 export const showFavorites = () => {
   // Clear the favorites container first
   favoritesContainer.innerHTML = "";

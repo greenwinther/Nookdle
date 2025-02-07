@@ -1,17 +1,22 @@
-.filter-group {
-  margin-bottom: 10px;
+.personality h4 {
+    margin: 5px;
+}
 
-  h4 {
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
+.gender h4 {
+  margin: 5px;
+}
+
+.species h4 {
+  margin: 5px;
 }
 
 .filter-button {
   background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  margin: 3px;
+  background: transparent;
+  border: bold 1px #4CAF50;
+  margin: 5px;
+  height: 30px;
+  width: 90px;
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;

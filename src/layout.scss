@@ -1,0 +1,131 @@
+@use "components/buttons/buttons.scss";
+@use "components/searchfield/searchfield.scss";
+@use "components/cards/card.scss";
+@use "components/checkboxes/checkbox.scss";
+@use "mixin.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin: 10px;
+
+    div {
+        justify-self: end;
+    }
+    h1 {
+        justify-self: center;
+        font-family: 'Fredoka', sans-serif;
+        color: #6B4226;
+        font-size: 3.5rem;
+        margin: 5px;
+    }
+  }
+  
+  main{
+    @include grid-layout(1fr, auto auto auto auto);
+    
+    grid-template-areas: 
+      "fetch-container"
+      "search-container"
+      "filter-container"
+      "card-container";
+  
+    .fetch-container {
+      grid-area: fetch-container;
+      @include display-flex(space-around, center);
+      margin: 10px
+    }
+  
+    .search-container {
+      grid-area: search-container;
+      @include display-flex(center, center);
+      flex-direction: row-reverse;
+      margin: 10px;
+    }
+  
+    .filter-container {
+      grid-area: filter-container;
+      @include display-flex(center, center);
+      flex-direction: column;
+      margin: 10px;
+  
+      .checkbox-container {
+        @include grid-layout(auto auto, auto auto);
+        grid-template-areas: 
+        "gender personality"
+        "species species"
+        ;
+  
+        .species-container {
+          grid-area: species;
+          display: flex;
+          align-items: center;
+          flex-direction: column-reverse;
+          align-self: start;
+  
+          .filter-species {
+            @include display-flex(center, center);
+            flex-wrap: wrap; 
+          }
+  
+        }
+  
+        .personality-container {
+          grid-area: personality;
+          display: flex;
+          align-items: center;
+          flex-direction: column-reverse;
+          align-self: start;
+  
+          .filter-personality {
+            @include display-flex(center, center);
+            flex-wrap: wrap; 
+          }
+        }
+  
+        .gender-container {
+          grid-area: gender;
+          display: flex;
+          align-items: center;
+          flex-direction: column-reverse;
+          align-self: start;
+  
+          .filter-gender {
+            @include display-flex(center, center);
+            flex-wrap: wrap; 
+          }
+        }
+      }
+    }
+  
+    .card-container {
+      grid-area: card-container;
+      @include display-flex(center, center);
+  
+      .villagers-container {
+        @include display-flex(center, center);
+        flex-wrap: wrap; 
+    }
+    
+    .bugs-container {
+        @include display-flex(center, center);
+        flex-wrap: wrap;
+    }
+    
+    .fish-container {
+        @include display-flex(center, center);
+        flex-wrap: wrap; 
+    }
+    
+    .favorites-container {
+        @include display-flex(center, center);
+        flex-wrap: wrap;
+    }
+  
+    }
+  }
+  
+  footer {
+    @include display-flex(center, center)
+  }

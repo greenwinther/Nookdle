@@ -1,81 +1,15 @@
-@use "components/buttons/buttons.scss";
-@use "components/searchfield/searchFieldContainer.scss";
+@use "./components/buttons/buttons.scss";
 @use "components/searchfield/searchfield.scss";
 @use "components/cards/card.scss";
-@use "components/cards/cardsContainer.scss";
 @use "components/checkboxes/checkbox.scss";
-@use "./mixin.scss" as *;
-
+@use "mixin.scss" as *;
+@use "layout.scss";
 
 body {
   font-family: Arial, sans-serif;
+  background-color: #faefe0;
+  color: #3A3A3A;
   margin: 0;
   padding: 0;
 }
 
-.header-container {
-  @include display-flex(end, center);
-  margin: 10px;
-}
-
-.main-container {
-  @include grid-layout(1fr, auto auto auto auto);
-  
-  grid-template-areas: 
-    "fetch-container"
-    "search-container"
-    "filter-container"
-    "card-container";
-
-  .fetch-container {
-    grid-area: fetch-container;
-    @include display-flex(space-around, center);
-    margin: 10px
-  }
-
-  .search-container {
-    grid-area: search-container;
-    @include display-flex(center, center);
-    flex-direction: row-reverse;
-    margin: 10px;
-  }
-
-  .filter-container {
-    grid-area: filter-container;
-    @include display-flex(center, center);
-    flex-direction: column;
-    margin: 10px;
-
-    .checkbox-container {
-      @include display-flex(center, center);
-      flex-direction: row-reverse;
-
-      .species-container {
-        display: flex;
-        flex-direction: column-reverse;
-        align-self: start;
-      }
-
-      .personality-container {
-        display: flex;
-        flex-direction: column-reverse;
-        align-self: start;
-      }
-
-      .gender-container {
-        display: flex;
-        flex-direction: column-reverse;
-        align-self: start;
-      }
-    }
-  }
-
-  .card-container {
-    grid-area: card-container;
-    @include display-flex(center, center);
-  }
-}
-
-.footer-container {
-  @include display-flex(center, center)
-}

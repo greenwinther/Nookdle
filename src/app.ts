@@ -38,23 +38,3 @@ export const initApp = async () => {
   // Initialize filter button toggle functionality
   toggleFilters(filterButton, filterContainer, checkboxContainer);
 };
-/*   setupSortButtons(
-    sortButtons,
-    searchfield,
-    updateDisplay,
-    currentSort,
-    showFavorite
-  );
-
-  setupFavoriteButton(
-    favoriteButton,
-    searchfield,
-    updateDisplay,
-    currentSort,
-    showFavorite
-  );
-
-  // Handle search input event for searching villagers
-  searchfield.searchInput.addEventListener("input", () => {
-    handleSearchUpdate(searchfield, updateDisplay, currentSort, showFavorite);
-  }); */
