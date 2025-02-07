@@ -14,7 +14,8 @@ export const filterCardsByName = (
     // Loop through each card and check if it matches the search input
     cards.forEach((card) => {
       // Get the name from the data attribute
-      const name = (card as HTMLElement).getAttribute("data-name") || "";
+      const name =
+        (card as HTMLElement).getAttribute("data-name")?.toLowerCase() || "";
 
       // Show or hide the card based on whether it starts with the search input
       if (name.startsWith(searchText)) {
@@ -25,6 +26,22 @@ export const filterCardsByName = (
     });
   });
 };
+
+/*   // Search filter, finds villagers whose names starts with the search term
+
+  // Filter the villagers based on the search term and sort order
+  const filteredVillagers = (
+    searchTerm,
+    villagers: NookipediaVillager[] = allVillagers
+  ) => {
+  let filteredVillagers = [...villagers]
+  }
+
+  if (searchTerm) {
+    const lowerSearch = searchTerm.lowercase();
+    filteredVillagers = filteredVillagers.filter((villager) =>
+      villager.name.toLowerCase().startsWith(lowerSearch)
+    );} */
 
 /* import type {
   NookipediaVillager,
@@ -200,6 +217,9 @@ export const filterVillagers = (
 
   return filteredVillagers;
 };
+
+export const getFilteredVillagers = (  villagers: NookipediaVillager[] = allVillagers
+): => { let filteredVillagers = [...villagers];
 
 // Function which filters and sorts villagers based on search term and sort order
 export const getFilteredVillagers = (

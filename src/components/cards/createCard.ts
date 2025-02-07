@@ -36,9 +36,11 @@ export const createCard = (
 
   let additionalInfo = "";
   // Type guard to check if data is a NookipediaVillager
+
   if (type === "villager") {
     // Narrowing to NookipediaVillager
     const villager = data as NookipediaVillager;
+
     additionalInfo = `
       <p>Species: ${villager.species}</p>
       <p>Personality: ${villager.personality}</p>
