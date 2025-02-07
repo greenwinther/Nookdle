@@ -15,6 +15,12 @@ export const searchContainer = createContainer("search");
 export const myFavoritebtnContainer = createContainer("myfavoritebtn");
 export const checkboxContainer = createContainer("checkbox");
 export const filterContainer = createContainer("filter");
+export const speciesContainer = createContainer("species");
+export const personalityContainer = createContainer("personality");
+export const genderContainer = createContainer("gender");
+checkboxContainer.appendChild(speciesContainer);
+checkboxContainer.appendChild(personalityContainer);
+checkboxContainer.appendChild(genderContainer);
 
 /* // Creates a main container with a dynamic class for different item types
 export const createContainer = (
