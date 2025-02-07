@@ -18,9 +18,7 @@ $button-weight: 110px;
   font-size: 20px;
   border: none;
 
-  &:hover {
-    background-color: darken($sky-blue, 10%)
-  }
+
 }
   
 .fetch-fish-btn,
@@ -36,13 +34,7 @@ $button-weight: 110px;
   border: none;
   cursor: pointer;
 
-  &:hover {
-    background-color: darken($leaf-green, 10%);
-  }
 
-  i {
-    margin-right: 8px;
-  }
 }
 
 .submit-search-button {
@@ -55,9 +47,7 @@ $button-weight: 110px;
   cursor: pointer;
   font-size: 16px;
 
-  &:hover {
-    background-color: darken($sunflower-yellow, 10%);
-  }
+
 }
 
 .filter-btn {
@@ -71,7 +61,5 @@ $button-weight: 110px;
   display: inline-block;
   
 
-  &:hover {
-    background-color: darken($soft-peach, 10%);
-  }
+
 }
