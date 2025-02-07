@@ -19,7 +19,6 @@ import { filterCardsByName } from "./events/filter/searchFilter";
 import { searchInput } from "./components/searchfield/createSearchField";
 import { fetchVillagerByName } from "./events/fetchDataEvent/fetchData";
 import { toggleFilters } from "./events/filter/toggleFilterButton";
-import { filterVillagers } from "./components/checkboxes/checkboxes";
 
 export const initApp = async () => {
   setupMainUI(mainContainer, fetchContainer, searchContainer, cardContainer);
@@ -38,8 +37,6 @@ export const initApp = async () => {
 
   // Initialize filter button toggle functionality
   toggleFilters(filterButton, filterContainer, checkboxContainer);
-  // Attach event listeners to checkboxes
-  document.addEventListener("change", () => filterVillagers());
 };
 /*   setupSortButtons(
     sortButtons,
