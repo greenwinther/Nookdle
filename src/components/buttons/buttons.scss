@@ -45,21 +45,6 @@ $button-weight: 110px;
   }
 }
 
-.search-input {
-  background-color: transparent;
-  border-radius: 8px;
-  border: 3px solid $search-border-color;
-  margin-right: 10px;
-  width: 250px;
-  height: $button-height;
-  font-size: 16px;
-  outline: none;
-
-  &:focus {
-    border-color: darken($search-border-color, 10%);
-  }
-}
-
 .submit-search-button {
   background-color: $sunflower-yellow;
   height: $button-height;
@@ -84,6 +69,7 @@ $button-weight: 110px;
   font-weight: bold;
   cursor: pointer;
   display: inline-block;
+  
 
   &:hover {
     background-color: darken($soft-peach, 10%);
