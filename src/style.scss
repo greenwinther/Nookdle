@@ -4,6 +4,7 @@
 @use "components/cards/card.scss";
 @use "components/cards/cardsContainer.scss";
 @use "components/checkboxes/checkbox.scss";
+@use "./mixin.scss" as *;
 
 
 body {
@@ -13,60 +14,68 @@ body {
 }
 
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  @include display-flex(end, center);
+  margin: 10px;
 }
 
 .main-container {
-  display: grid;
-  grid-template-columns: 1fr; 
-  grid-template-rows: auto auto auto auto; 
-  gap: 20px; 
-
-
+  @include grid-layout(1fr, auto auto auto auto);
+  
   grid-template-areas: 
     "fetch-container"
-    "search-input"
+    "search-container"
     "filter-container"
     "card-container";
 
-  
   .fetch-container {
     grid-area: fetch-container;
+    @include display-flex(space-around, center);
+    margin: 10px
   }
 
-  .search-input {
+  .search-container {
     grid-area: search-container;
+    @include display-flex(center, center);
+    flex-direction: row-reverse;
+    margin: 10px;
   }
 
   .filter-container {
     grid-area: filter-container;
+    @include display-flex(center, center);
+    flex-direction: column;
+    margin: 10px;
+
+    .checkbox-container {
+      @include display-flex(center, center);
+      flex-direction: row-reverse;
+
+      .species-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-self: start;
+      }
+
+      .personality-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-self: start;
+      }
+
+      .gender-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-self: start;
+      }
+    }
   }
 
   .card-container {
     grid-area: card-container;
+    @include display-flex(center, center);
   }
 }
 
-  .card-container {
-  display: flex;
-  flex-direction: column;
-}
-
-  .fetch-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  } 
-
-
 .footer-container {
-  padding: 10px;
-  background-color: #f8f8f8;
-  border-top: 1px solid #ddd;
-  text-align: center;
+  @include display-flex(center, center)
 }

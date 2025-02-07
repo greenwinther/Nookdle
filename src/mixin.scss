@@ -1,0 +1,11 @@
+@mixin grid-layout($gt-column, $gt-row) {
+    display: grid;
+    grid-template-columns: $gt-column; 
+    grid-template-rows: $gt-row; 
+}
+
+@mixin display-flex($justify-c, $align-i) {
+    display: flex;
+    justify-content: $justify-c;
+    align-items: $align-i;
+}
