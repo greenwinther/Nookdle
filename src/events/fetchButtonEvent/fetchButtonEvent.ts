@@ -18,11 +18,10 @@ import {
   fishContainer,
   bugsContainer,
   favoritesContainer,
-  checkboxContainer,
   filterContainer,
 } from "../../components/containers/createContainers";
 import { initializeFilters } from "../../components/checkboxes/checkboxes";
-import { filterButton } from "../../components/buttons/createButtons";
+import { filterVillagers } from "../../components/checkboxes/checkboxes";
 
 let filtersInitialized = false;
 
@@ -33,8 +32,7 @@ export const setupFetchButton = (
   villagersContainer: HTMLDivElement,
   bugsContainer: HTMLDivElement,
   fishContainer: HTMLDivElement,
-  favoritesContainer: HTMLDivElement,
-  checkboxContainer: HTMLDivElement
+  favoritesContainer: HTMLDivElement
 ) => {
   button.addEventListener("click", async () => {
     try {
@@ -54,14 +52,13 @@ export const setupFetchButton = (
       loading.remove();
 
       // Append the filterContainer only once
-      filterContainer.appendChild(filterButton);
       mainContainer.appendChild(filterContainer);
       // Check which button was clicked, and append the corresponding data to the relevant container
       if (button === villagersButton) {
         createCardsFromFetchedData(villagersContainer, "villager");
         // Initialize filters only once
         if (!filtersInitialized) {
-          initializeFilters(checkboxContainer);
+          initializeFilters();
           filtersInitialized = true;
         }
       } else if (button === bugsButton) {
@@ -69,6 +66,8 @@ export const setupFetchButton = (
       } else if (button === fishButton) {
         createCardsFromFetchedData(fishContainer, "fish");
       }
+
+      filterVillagers();
     } catch (error) {
       console.error("Error:", error);
       loading.textContent = errorMessage;
@@ -85,8 +84,7 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer,
-    checkboxContainer
+    favoritesContainer
   );
   setupFetchButton(
     bugsButton,
@@ -95,8 +93,7 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer,
-    checkboxContainer
+    favoritesContainer
   );
   setupFetchButton(
     fishButton,
@@ -105,8 +102,7 @@ export const setupButtonEvents = () => {
     villagersContainer,
     bugsContainer,
     fishContainer,
-    favoritesContainer,
-    checkboxContainer
+    favoritesContainer
   );
 };
 
